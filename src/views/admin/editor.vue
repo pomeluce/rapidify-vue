@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import RifyTextEditor from '@/components/rify/textEditor.vue';
+import RifyTextEditor from '@/components/rify/textEditor';
 
 const textValue = ref<string>('');
 </script>

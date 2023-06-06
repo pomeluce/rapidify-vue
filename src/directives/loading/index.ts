@@ -1,5 +1,4 @@
 import RifyLoadComponent from '@/components/rify/loading';
-import { App } from 'vue';
 import RifyLoad from '@/directives/loading/RifyLoad.ts';
 
 /* loading 参数模型 */
@@ -40,9 +39,4 @@ const RifyLoading = (option?: ILoadOptions): RifyLoad => {
   return loading;
 };
 
-export default {
-  install(app: App) {
-    app.config.globalProperties.$loading = RifyLoading;
-  },
-};
 export { RifyLoading };
