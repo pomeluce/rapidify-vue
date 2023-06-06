@@ -70,7 +70,7 @@ export default class Axios {
       (config: InternalAxiosRequestConfig) => {
         // 如果 loading 对象不存在且开启了 loading, 则创建一个 loading 对象
         if (!this.loading && this.options.loading) {
-          this.loading = RifyLoading.service({ bgColor: 'rgba(255,255,255,0.65)' });
+          this.loading = RifyLoading({ bgColor: 'rgba(255,255,255,0.65)' });
         }
         // 获取 token
         const token = storage.get(CacheKey.TOKEN_NAME);

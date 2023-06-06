@@ -1,5 +1,12 @@
+import { SlotsType } from 'vue';
+
 export default defineComponent({
   name: 'rify-card',
+  slots: Object as SlotsType<{
+    default?: () => any;
+    title?: () => any;
+    foot?: () => any;
+  }>,
   setup(_, { slots }) {
     return () => (
       <section class={Object.keys(slots).length ? 'bg-white overflow-hidden border shadow-sm rounded-xl' : ''}>

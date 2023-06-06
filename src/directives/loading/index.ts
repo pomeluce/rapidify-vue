@@ -1,5 +1,6 @@
-import rifyLoading from '@/components/rify/loading';
+import RifyLoadComponent from '@/components/rify/loading';
 import { App } from 'vue';
+import RifyLoad from '@/directives/loading/RifyLoad.ts';
 
 /* loading 参数模型 */
 export interface ILoadOptions {
@@ -26,32 +27,22 @@ let options: ILoadOptions = reactive({
 });
 
 // 组件传递参数并挂载在根目录元素上
-const $rifyLoading = createApp(rifyLoading, { options }).mount(vNode);
+const $loading = createApp(RifyLoadComponent, { options }).mount(vNode);
 // 组件加载方法
-const RifyLoading = {
-  service(option?: ILoadOptions) {
-    // 传递参数
-    Object.assign(options, option);
-    // 显示组件
-    this.show();
-    // 返回组件
-    return this;
-  },
-  show() {
-    // 设置组件显示
-    options.isShow = false;
-    // 将组件挂载到根目录元素上
-    document.body.appendChild($rifyLoading.$el);
-  },
-  close() {
-    // 设置组件隐藏
-    options.isShow = true;
-  },
+const RifyLoading = (option?: ILoadOptions): RifyLoad => {
+  // 传递参数
+  Object.assign(options, option);
+  // 创建实例对象
+  const loading = new RifyLoad(options, $loading);
+  // 显示组件
+  loading.show();
+  // 返回实例
+  return loading;
 };
 
 export default {
   install(app: App) {
-    app.config.globalProperties.$rifyLoading = RifyLoading;
+    app.config.globalProperties.$loading = RifyLoading;
   },
 };
 export { RifyLoading };

@@ -11,7 +11,7 @@ const show = () => {
 };
 
 const load = () => {
-  const loading = RifyLoading.service({
+  const loading = RifyLoading({
     message: '加载中...',
     bgColor: 'rgb(105, 107, 103,0.65)',
   });
