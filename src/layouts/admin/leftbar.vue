@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import router from '@/plugins/router';
 import { RouteRecordRaw } from 'vue-router';
+import Logo from '@/assets/images/pomeluce.svg';
+import { forEach } from 'lodash';
 
 const menuStore = useMenuStore();
 
@@ -12,35 +14,58 @@ const routes = router
   .sort((r1, r2) => (r1.meta.menu?.order ?? 0) - (r2.meta.menu?.order ?? 0));
 const goto = (route: RouteRecordRaw) => {
   route.meta?.menu?.blank ? routeOpen(route, '_blank') : router.push(route);
+  document.documentElement.clientWidth < 768 && (menuStore.menuState = false);
+};
+
+/**
+ * 菜单显示隐藏
+ * @param index 菜单索引
+ */
+const toggleMenuList = (index: number) => {
+  document.getElementsByClassName('rify-menu-item__list')[index].classList.toggle('hidden');
+  const el = document.getElementsByClassName('rify-menu-item__suffix')[index].children;
+  forEach(el, item => {
+    const { classList } = item;
+    classList.contains('hidden') ? classList.remove('hidden') : classList.add('hidden');
+  });
 };
 
 onMounted(() => {
   // 移动端, 点击关闭菜单
-  document.documentElement.addEventListener('click', () => {
-    if (document.documentElement.clientWidth < 768) menuStore.menuState = false;
+  document.querySelector('.rify-admin-layout')?.addEventListener('click', () => {
+    document.documentElement.clientWidth < 768 && (menuStore.menuState = false);
   });
 });
 </script>
 
 <template>
-  <div class="bg-slate-700 absolute md:relative h-full overflow-auto z-30">
-    <main class="flex py-7 md:hidden"></main>
+  <div class="bg-gray-50 border-r shadow-lg md:shadow-none absolute md:relative h-full overflow-auto z-50">
     <main v-if="menuStore.menuState">
-      <nav class="text-slate-300">
+      <nav class="text-slate-800">
         <router-link
           :to="{ name: RouteName.ADMIN }"
-          class="flex justify-center items-center px-7 py-4 gap-1 cursor-pointer"
+          class="flex justify-center items-start px-7 py-4 gap-1 cursor-pointer"
         >
-          <icon-application-one theme="outline" size="24" />
-          <span class="text-lg uppercase">rapidify-vue</span>
+          <n-image preview-disabled :src="Logo" class="w-6 h-6" />
+          <span class="text-lg font-bold uppercase">rapidify-vue</span>
         </router-link>
         <div>
-          <section v-for="(route, index) in routes" :key="index" class="flex flex-col p-5 text-sm font-medium">
-            <article class="flex items-center gap-2">
-              <component :is="route.meta.menu?.icon" size="16" />
-              <span>{{ route.meta.menu?.label }}</span>
+          <section
+            v-for="(route, index) in routes"
+            :key="index"
+            class="flex flex-col mx-7 py-5 text-sm font-medium border-b"
+          >
+            <article class="flex justify-between items-center">
+              <span class="flex items-center gap-2">
+                <component :is="route.meta.menu?.icon" size="16" />
+                <span>{{ route.meta.menu?.label }}</span>
+              </span>
+              <button class="rify-menu-item__suffix" @click="toggleMenuList(index)">
+                <icon-down size="16" />
+                <icon-right class="hidden" size="16" />
+              </button>
             </article>
-            <article>
+            <article class="rify-menu-item__list">
               <div
                 v-for="(item, key) in route.children"
                 :key="key"
@@ -60,15 +85,16 @@ onMounted(() => {
 <style scoped lang="scss">
 a {
   &:hover {
-    @apply text-slate-50;
+    @apply text-slate-900;
   }
 }
 
 .menu-option {
-  @apply px-5 py-3 my-2 rounded text-white bg-slate-600 hover:bg-slate-500 opacity-80 cursor-pointer;
+  @apply px-5 py-3 my-3 rounded text-[#0066ff] bg-[#dbebfd] opacity-80 cursor-pointer;
 
+  &:hover,
   &.active {
-    @apply bg-rify-primary opacity-95;
+    @apply bg-rify-primary opacity-95 text-white;
   }
 }
 </style>

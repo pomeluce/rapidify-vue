@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Logo from '/pomeluce.ico';
+import Logo from '@/assets/images/pomeluce.svg';
 
 const { topbar } = config();
 </script>
@@ -10,7 +10,6 @@ const { topbar } = config();
       <section class="flex items-center xl:items-stretch md:mr-6 text-gray-600">
         <div class="flex justify-center items-center">
           <router-link to="/" class="flex justify-between items-center gap-1 font-bold mr-5 text-rify-primary">
-            <!-- <icon-application-one theme="outline" size="24" /> -->
             <n-image preview-disabled :src="Logo" class="w-6 h-6" />
             <span class="font-bold text-xl uppercase">rapidify-vue</span>
           </router-link>

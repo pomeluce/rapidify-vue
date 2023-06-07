@@ -6,7 +6,7 @@ import LeftBar from '@/layouts/admin/leftbar.vue';
 <template>
   <main class="grid w-screen h-screen md:grid-cols-[auto_1fr]">
     <LeftBar />
-    <section id='admin-content' class="grid grid-rows-[auto_1fr] overflow-hidden">
+    <section id='rify-admin-layout' class="grid grid-rows-[auto_1fr] overflow-hidden">
       <Topbar />
       <div class="overflow-auto">
         <router-view #default="{ Component, route }">
