@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import router from '@/plugins/router';
 import { RouteRecordRaw } from 'vue-router';
-import Logo from '@/assets/images/pomeluce.svg';
+import Logo from '@/assets/pomeluce.svg';
 import { forEach } from 'lodash';
 
 const menuStore = useMenuStore();

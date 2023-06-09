@@ -5,6 +5,7 @@ interface UserModel {
   gender: number;
   avatar: string;
   phone: string;
-  createTime: string;
-  updateTime: string;
+  technique: string[],
+  createTime: number;
+  updateTime: number;
 }

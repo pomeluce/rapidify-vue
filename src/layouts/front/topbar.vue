@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Logo from '@/assets/images/pomeluce.svg';
+import Logo from '@/assets/pomeluce.svg';
 
 const { topbar } = config();
 </script>

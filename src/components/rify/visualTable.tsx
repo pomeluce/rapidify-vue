@@ -1,5 +1,5 @@
-import { VxeColumn, VxeColumnProps, VxeTable, VxeTableProps, interceptor } from 'vxe-table';
 import { PropType } from 'vue';
+import { VxeColumn, VxeColumnProps, VxeTable, VxeTableProps, interceptor } from 'vxe-table';
 import { NInput, NDatePicker, NInputNumber, NSelect, SelectOption, SelectGroupOption } from 'naive-ui';
 import { LeftOne, RightOne } from '@icon-park/vue-next';
 
@@ -36,6 +36,7 @@ export interface IVisualColumnProp extends VxeColumnProps {
   slot?: IVisualColumnSlot[];
 }
 
+/* edit 插槽配置 */
 const editSlotAction = {
   input: (row: IVisualRowData, field: string) => <NInput v-model:value={row[field]} />,
   select: (row: IVisualRowData, field: string, slot: IVisualColumnSlot) =>
@@ -59,6 +60,7 @@ const editSlotAction = {
   ),
 };
 
+/* slot 插槽配置 */
 const slotAction = {
   default: (row: IVisualRowData, field: string, slot: IVisualColumnSlot) => (
     <span>{slot.dealWith ? slot.dealWith(row) : row[field]}</span>
@@ -87,6 +89,7 @@ const slotAction = {
   ),
 };
 
+/* slot 插槽挂载 */
 const slotMount = ({ slot: slots, field }: IVisualColumnProp) => {
   const slot: Record<string, any> = {};
   field &&

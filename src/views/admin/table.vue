@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { IVisualColumnProp, IVisualTableProp } from '@/components/rify/visualTable.tsx';
+import { IVisualColumnProp, IVisualTableProp } from '@/components/rify/visualTable';
 import dayjs from 'dayjs';
 
+// column 配置
 const column: Array<IVisualColumnProp> = [
   {
     type: 'checkbox',
@@ -60,7 +61,7 @@ const column: Array<IVisualColumnProp> = [
   },
   {
     title: '技能',
-    field: 'avatar',
+    field: 'technique',
     editRender: {},
     slot: [
       {
@@ -127,6 +128,7 @@ const column: Array<IVisualColumnProp> = [
   },
 ] as IVisualColumnProp[];
 
+// table 配置
 const label: IVisualTableProp = {
   border: true,
   round: true,
@@ -137,16 +139,18 @@ const label: IVisualTableProp = {
   editConfig: {
     trigger: 'click',
     mode: 'cell',
+    icon: 'icon-rify-edit',
   },
 };
 
+// 表单数据
 const tableData = ref<UserModel[]>([
   {
     id: 10001,
     name: '张三',
     gender: 1,
     email: 'zhangsan@gmail.com',
-    avatar: ['java', 'vue'],
+    technique: ['java', 'vue'],
     createTime: 1604940444444,
     updateTime: 1704940444444,
   },
@@ -155,13 +159,11 @@ const tableData = ref<UserModel[]>([
     name: '李四',
     gender: 0,
     email: 'lisi@gmail.com',
-    avatar: ['java', 'python'],
+    technique: ['java', 'python'],
     createTime: 1604940444444,
     updateTime: 1704940444444,
   },
-]);
-
-const time = ref<number>(232434);
+] as UserModel[]);
 </script>
 
 <template>
