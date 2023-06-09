@@ -1,5 +1,6 @@
 import { RouteRecordRaw } from 'vue-router';
 import { Error } from '@icon-park/vue-next';
+
 export default {
   path: '/admin',
   component: () => import('@/layouts/admin/index.vue'),

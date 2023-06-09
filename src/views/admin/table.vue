@@ -159,7 +159,7 @@ const tableData = ref<UserModel[]>([
     createTime: 1604940444444,
     updateTime: 1704940444444,
   },
-] as UserModel[]);
+]);
 
 const time = ref<number>(232434);
 </script>

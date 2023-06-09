@@ -1,5 +1,6 @@
-import { RouteRecordRaw } from 'vue-router';
 import { Config, DashboardOne, WaterfallsH } from '@icon-park/vue-next';
+import { RouteRecordRaw } from 'vue-router';
+
 export default [
   {
     path: '/admin',

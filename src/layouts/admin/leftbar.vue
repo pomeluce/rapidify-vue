@@ -25,8 +25,7 @@ const toggleMenuList = (index: number) => {
   document.getElementsByClassName('rify-menu-item__list')[index].classList.toggle('hidden');
   const el = document.getElementsByClassName('rify-menu-item__suffix')[index].children;
   forEach(el, item => {
-    const { classList } = item;
-    classList.contains('hidden') ? classList.remove('hidden') : classList.add('hidden');
+    item.classList.contains('hidden') ? item.classList.remove('hidden') : item.classList.add('hidden');
   });
 };
 
@@ -55,15 +54,15 @@ onMounted(() => {
             :key="index"
             class="flex flex-col mx-7 py-5 text-sm font-medium border-b"
           >
-            <article class="flex justify-between items-center">
+            <article class="flex justify-between items-center cursor-pointer" @click="toggleMenuList(index)">
               <span class="flex items-center gap-2">
                 <component :is="route.meta.menu?.icon" size="16" />
                 <span>{{ route.meta.menu?.label }}</span>
               </span>
-              <button class="rify-menu-item__suffix" @click="toggleMenuList(index)">
+              <span class="rify-menu-item__suffix">
                 <icon-down size="16" />
                 <icon-right class="hidden" size="16" />
-              </button>
+              </span>
             </article>
             <article class="rify-menu-item__list">
               <div
