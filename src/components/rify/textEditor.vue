@@ -64,7 +64,6 @@ onBeforeUnmount(() => {
 
 /**
  * 计算属性, 修改和返回图片数组
- * @type {WritableComputedRef<string[]>}
  */
 const images = computed({
   get() {
@@ -77,13 +76,12 @@ const images = computed({
 
 /**
  * 计算属性, 修改和返回编辑器的值
- * @type {WritableComputedRef<string>}
  */
 const value = computed({
   get() {
     return /^<([a-z]+)([^<]+)*(?:>|[\s\/])/i.test(props.modeValue) ? props.modeValue : `<p>${props.modeValue}</p>`;
   },
-  set(value: string) {
+  set(_: string) {
     emit('update:modeValue', editorRef.value?.getHtml());
   },
 });

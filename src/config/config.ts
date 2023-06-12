@@ -85,7 +85,18 @@ export default () => {
     ],
   };
 
-  const themeOverrides: GlobalThemeOverrides = {};
+  const themeOverrides: GlobalThemeOverrides = {
+    common: {
+      primaryColor: '#0066ff',
+      primaryColorHover: '#008cff',
+      primaryColorPressed: '#005Ae0',
+      primaryColorSuppl: '#008cff',
+      infoColor: '#34495e',
+      infoColorHover: '#44586c',
+      infoColorPressed: '#263747',
+      infoColorSuppl: '#44586c',
+    }
+  };
 
   return { axios, topbar, themeOverrides };
 };

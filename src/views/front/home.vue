@@ -25,7 +25,7 @@ const load = () => {
   <rify-card class="h-[2000px]">
     <template #title>我是首页</template>
     <div class="flex gap-3">
-      <n-button type="primary" secondary @click="show">消息测试</n-button>
+      <n-button type="primary" @click="show">消息测试</n-button>
       <n-button type="info" secondary @click="load">全局 load</n-button>
     </div>
   </rify-card>
