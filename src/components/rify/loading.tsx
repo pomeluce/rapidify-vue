@@ -19,7 +19,7 @@ export default defineComponent({
       >
         <LoadingFour
           class={'animate-spin duration-300'}
-          theme="filled"
+          theme={'filled'}
           strokeWidth={options?.width}
           size={options?.size}
           fill={options?.color}

@@ -109,10 +109,12 @@ export default defineComponent({
     },
     label: Object as PropType<IVisualTableProp>,
   },
-  setup({ data, column, label }) {
+  setup(props) {
+    const { label, column } = props;
+
     return () => (
       <main>
-        <VxeTable {...label} data={data}>
+        <VxeTable {...label} data={props.data}>
           <>
             {column.map((item: IVisualColumnProp, index: number) => (
               <VxeColumn {...item} key={index} v-slots={item.slot ? slotMount(item) : null}></VxeColumn>

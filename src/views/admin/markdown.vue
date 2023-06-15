@@ -1,158 +1,68 @@
-<script lang="ts" setup>
-import { VxeTable, VxeColumn, VxeInput, VxeSelect, VxeOption } from 'vxe-table';
-interface RowVO {
-  id: number;
-  name: string;
-  nickname: string;
-  role: string;
-  sex: string;
-  sex2: string[];
-  num1: number;
-  age: number;
-  address: string;
-  date12: string;
-  date13: string;
-}
+<script setup lang="ts">
+import { EditorProps, MdPreviewProps } from 'md-editor-v3';
+import RifyMarkEditor from '@/components/rify/markEditor';
+import RifyMarkPreview, { IMarkPreviewCatalogProps } from '@/components/rify/markPreview';
+import grammar from '@/assets/static/grammar.md?raw';
+import dayjs from 'dayjs';
 
-const tableData = ref<RowVO[]>([
-  {
-    id: 10001,
-    name: 'Test1',
-    nickname: 'T1',
-    role: 'Develop',
-    sex: '0',
-    sex2: ['0'],
-    num1: 40,
-    age: 28,
-    address: 'Shenzhen',
-    date12: '',
-    date13: '',
-  },
-  {
-    id: 10002,
-    name: 'Test2',
-    nickname: 'T2',
-    role: 'Designer',
-    sex: '1',
-    sex2: ['0', '1'],
-    num1: 20,
-    age: 22,
-    address: 'Guangzhou',
-    date12: '',
-    date13: '2020-08-20',
-  },
-  {
-    id: 10003,
-    name: 'Test3',
-    nickname: 'T3',
-    role: 'Test',
-    sex: '0',
-    sex2: ['1'],
-    num1: 200,
-    age: 32,
-    address: 'Shanghai',
-    date12: '2020-09-10',
-    date13: '',
-  },
-  {
-    id: 10004,
-    name: 'Test4',
-    nickname: 'T4',
-    role: 'Designer',
-    sex: '1',
-    sex2: ['1'],
-    num1: 30,
-    age: 23,
-    address: 'Shenzhen',
-    date12: '',
-    date13: '2020-12-04',
-  },
-]);
+/* Markdown 配置 */
+const value = ref<string>();
+const loading = ref<boolean>(false);
+const conf = ref<EditorProps>({
+  footers: ['markdownTotal', '=', 0, 'scrollSwitch'], // 页脚设置
+} as EditorProps);
 
-const sexList1 = ref([
-  { label: '', value: '' },
-  { label: '男', value: '1' },
-  { label: '女', value: '0' },
-]);
+onBeforeMount(() => {
+  loading.value = true;
+  setInterval(() => {
+    value.value = grammar;
+    loading.value = false;
+  }, 500);
+});
 
-const formatSex = (value: string) => {
-  if (value === '1') {
-    return '男';
-  }
-  if (value === '0') {
-    return '女';
-  }
-  return '';
+/* 插槽 -> 页脚时间设置 */
+const weekNames = {
+  'en-US': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+  'zh-CN': ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'],
 };
+const time = ref<string>(dayjs().format('YYYY-MM-DD HH:mm:ss'));
+const text = computed(() => {
+  const weekday = dayjs().day();
+  const week = weekNames['zh-CN'][weekday > 0 ? weekday - 1 : 6];
+  return `${time.value} ${week}`;
+});
+const $time = setInterval(() => {
+  time.value = dayjs().format('YYYY-MM-DD HH:mm:ss');
+}, 1_000);
 
-const formatMultiSex = (values: string[]) => {
-  if (values) {
-    return values.map(val => formatSex(val)).join(',');
-  }
-  return '';
-};
+onBeforeUnmount(() => {
+  clearInterval($time);
+});
+
+/* MarkPreview 配置 */
+const previewOptions = ref<MdPreviewProps>({
+  editorId: 'preview-only',
+} as MdPreviewProps);
+const catalogOptions = ref<IMarkPreviewCatalogProps>({
+  editorId: 'preview-only',
+} as IMarkPreviewCatalogProps);
 </script>
 
 <template>
-  <div>
-    <vxe-table
-      border
-      show-overflow
-      :data="tableData"
-      :column-config="{ resizable: true }"
-      :edit-config="{ trigger: 'click', mode: 'cell' }"
-    >
-      <vxe-column type="seq" width="60"></vxe-column>
-      <vxe-column field="name" title="Name" :edit-render="{ autofocus: '.vxe-input--inner' }">
-        <template #edit="{ row }">
-          <vxe-input v-model="row.name" type="text"></vxe-input>
-        </template>
-      </vxe-column>
-      <vxe-column field="role" title="Role" :edit-render="{}">
-        <template #edit="{ row }">
-          <vxe-input v-model="row.role" type="text" placeholder="请输入昵称"></vxe-input>
-        </template>
-      </vxe-column>
-      <vxe-column field="sex" title="Sex" :edit-render="{}">
-        <template #default="{ row }">
-          <span>{{ formatSex(row.sex) }}</span>
-        </template>
-        <template #edit="{ row }">
-          <vxe-select v-model="row.sex" transfer>
-            <vxe-option v-for="item in sexList1" :key="item.value" :value="item.value" :label="item.label"></vxe-option>
-          </vxe-select>
-        </template>
-      </vxe-column>
-      <vxe-column field="sex2" title="多选下拉" :edit-render="{}">
-        <template #default="{ row }">
-          <span>{{ formatMultiSex(row.sex2) }}</span>
-        </template>
-        <template #edit="{ row }">
-          <vxe-select v-model="row.sex2" multiple transfer>
-            <vxe-option v-for="item in sexList1" :key="item.value" :value="item.value" :label="item.label"></vxe-option>
-          </vxe-select>
-        </template>
-      </vxe-column>
-      <vxe-column field="num6" title="Number" :edit-render="{}">
-        <template #edit="{ row }">
-          <vxe-input v-model="row.num6" type="number" placeholder="请输入数值"></vxe-input>
-        </template>
-      </vxe-column>
-      <vxe-column field="date12" title="Date" :edit-render="{}">
-        <template #edit="{ row }">
-          <n-date-picker v-model:formatted-value='row.date12' date-format='yyyy-MM-dd' type='date' />
-        </template>
-      </vxe-column>
-      <vxe-column field="date13" title="Week" :edit-render="{}">
-        <template #edit="{ row }">
-          <vxe-input v-model="row.date13" type="week" placeholder="请选择日期" transfer></vxe-input>
-        </template>
-      </vxe-column>
-      <vxe-column field="address" title="Address" :edit-render="{}">
-        <template #edit="{ row }">
-          <vxe-input v-model="row.address" type="text"></vxe-input>
-        </template>
-      </vxe-column>
-    </vxe-table>
-  </div>
+  <rify-card>
+    <n-tabs type="line" size="large" :tabsPadding="20" pane-style="padding: 20px">
+      <n-tab-pane name="Markdown 编辑器">
+        <rify-mark-editor v-model:value="value" :loading="loading" :conf="conf">
+          <template #defFooters>
+            <span>{{ text }}</span>
+          </template>
+        </rify-mark-editor>
+      </n-tab-pane>
+      <n-tab-pane name="Markdown 预览">
+        <rify-mark-preview :value="value" :loading="loading" :preview="previewOptions" :catalog="catalogOptions" />
+      </n-tab-pane>
+    </n-tabs>
+  </rify-card>
 </template>
+
+<style scoped lang="scss"></style>

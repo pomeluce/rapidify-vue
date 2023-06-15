@@ -34,6 +34,8 @@ onMounted(() => {
   document.querySelector('.rify-admin-layout')?.addEventListener('click', () => {
     document.documentElement.clientWidth < 768 && (menuStore.menuState = false);
   });
+  // 当前路由菜单展开
+  document.querySelector('.menu-option.active')!.parentElement?.classList.remove('hidden');
 });
 </script>
 
@@ -60,11 +62,11 @@ onMounted(() => {
                 <span>{{ route.meta.menu?.label }}</span>
               </span>
               <span class="rify-menu-item__suffix">
-                <icon-down size="16" />
-                <icon-right class="hidden" size="16" />
+                <icon-down class="hidden" size="16" />
+                <icon-right size="16" />
               </span>
             </article>
-            <article class="rify-menu-item__list">
+            <article class="rify-menu-item__list hidden">
               <div
                 v-for="(item, key) in route.children"
                 :key="key"

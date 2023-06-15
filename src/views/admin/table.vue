@@ -47,6 +47,10 @@ const column: Array<IVisualColumnProp> = [
       { label: 'Java', value: 'java' },
       { label: 'Python', value: 'python' },
       { label: 'Vue', value: 'vue' },
+      { label: 'TypeScript', value: 'typescript' },
+      { label: 'React', value: 'react' },
+      { label: 'Spring', value: 'spring' },
+      { label: 'Orcale', value: 'orcale' },
     ],
     filterMethod: ({ value, row }) => row.technique.includes(value),
     editRender: {},
@@ -59,6 +63,10 @@ const column: Array<IVisualColumnProp> = [
           { label: 'Java', value: 'java' },
           { label: 'Python', value: 'python' },
           { label: 'Vue', value: 'vue' },
+          { label: 'TypeScript', value: 'typescript' },
+          { label: 'React', value: 'react' },
+          { label: 'Spring', value: 'spring' },
+          { label: 'Orcale', value: 'orcale' },
         ],
       },
     ],
@@ -104,26 +112,14 @@ const label: IVisualTableProp = {
 };
 
 // 表单数据
-const tableData = ref<UserModel[]>([
-  {
-    id: 10001,
-    name: '张三',
-    gender: 1,
-    email: 'zhangsan@gmail.com',
-    technique: ['java', 'vue'],
-    createTime: 1604940444444,
-    updateTime: 1704940444444,
-  },
-  {
-    id: 10002,
-    name: '李四',
-    gender: 0,
-    email: 'lisi@gmail.com',
-    technique: ['java', 'python'],
-    createTime: 1604940444444,
-    updateTime: 1704940444444,
-  },
-] as UserModel[]);
+const tableData = ref<UserModel[]>([]);
+
+const { queryUserList } = useUser();
+
+onBeforeMount(async () => {
+  const { data: result } = await queryUserList(100);
+  tableData.value = result;
+});
 </script>
 
 <template>
