@@ -60,13 +60,13 @@ export default [
       {
         path: 'markdown',
         name: 'markdown',
-        meta: { menu: { label: 'markdown' } },
+        meta: { menu: { label: 'Markdown' } },
         component: () => import('@/views/admin/markdown.vue'),
       },
       {
-        path: 'excel',
-        name: 'excelTable',
-        meta: { menu: { label: 'excel 表格' } },
+        path: 'table',
+        name: 'visualTable',
+        meta: { menu: { label: 'VisualTable' } },
         component: () => import('@/views/admin/table.vue'),
       },
     ],
