@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { EditorProps, MdPreviewProps } from 'md-editor-v3';
-import RifyMarkEditor from '@/components/rify/markEditor';
-import RifyMarkPreview, { IMarkPreviewCatalogProps } from '@/components/rify/markPreview';
+import { IMarkPreviewCatalogProps } from '@/components/rify/markPreview';
 import grammar from '@/assets/static/grammar.md?raw';
 import dayjs from 'dayjs';
 

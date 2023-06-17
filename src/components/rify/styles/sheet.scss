@@ -1,0 +1,11 @@
+.w-e-dropdown {
+  @apply flex flex-col justify-center items-start ml-auto relative cursor-default border-l;
+
+  & .w-e-dropdown-btn {
+    @apply flex justify-center items-center w-full h-full px-3;
+  }
+
+  & .w-e-dropdown-menu {
+    @apply flex flex-wrap justify-evenly bg-white w-80 absolute z-10 top-10 right-0 border rounded drop-shadow-xl;
+  }
+}

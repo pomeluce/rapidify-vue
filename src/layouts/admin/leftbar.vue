@@ -35,13 +35,21 @@ onMounted(() => {
     document.documentElement.clientWidth < 768 && (menuStore.menuState = false);
   });
   // 当前路由菜单展开
-  document.querySelector('.menu-option.active')!.parentElement?.classList.remove('hidden');
+  (document.querySelector('.menu-option.active')!.parentElement?.previousElementSibling as HTMLElement).click();
+
+  // 加载时为移动端, 则关闭菜单
+  document.documentElement.clientWidth < 768 && (menuStore.menuState = false);
+});
+
+// 监听窗口变化, 调整菜单状态
+window.addEventListener('resize', () => {
+  document.documentElement.clientWidth < 768 ? (menuStore.menuState = false) : (menuStore.menuState = true);
 });
 </script>
 
 <template>
   <div class="bg-gray-50 border-r shadow-lg md:shadow-none absolute md:relative h-full overflow-auto z-50">
-    <main v-if="menuStore.menuState">
+    <main v-show="menuStore.menuState">
       <nav class="text-slate-800">
         <router-link
           :to="{ name: RouteName.ADMIN }"

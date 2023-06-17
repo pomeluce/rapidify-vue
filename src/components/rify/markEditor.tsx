@@ -53,9 +53,12 @@ export default defineComponent({
     /* 获取配置项 */
     let { conf, height } = props;
 
+    const modelVal = ref<string>()
+
     /* 侦听器, 数据更新 */
     watchEffect(() => {
-      emit('update:value', props.value);
+      modelVal.value = props.value;
+      emit('update:value', modelVal.value);
     });
 
     /* 合并配置项 */
@@ -66,7 +69,7 @@ export default defineComponent({
         <MdEditor
           {...conf}
           style={{ height: `${height}px` }}
-          v-model={props.value}
+          v-model={modelVal.value}
           v-slots={{ defToolbalrs, defFooters }}
           onOnUploadImg={conf?.onUploadImg ? conf.onUploadImg : uploadImgs}
         />

@@ -69,6 +69,12 @@ export default [
         meta: { menu: { label: 'VisualTable' } },
         component: () => import('@/views/admin/table.vue'),
       },
+      {
+        path: 'excel',
+        name: 'excelSheet',
+        meta: { menu: { label: 'ExcelSheet' } },
+        component: () => import('@/views/admin/excel.vue'),
+      },
     ],
   },
 ] as RouteRecordRaw[];
