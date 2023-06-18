@@ -43,7 +43,7 @@ onMounted(() => {
 
 // 监听窗口变化, 调整菜单状态
 window.addEventListener('resize', () => {
-  document.documentElement.clientWidth < 768 ? (menuStore.menuState = false) : (menuStore.menuState = true);
+  document.documentElement.clientWidth < 768 && (menuStore.menuState = false);
 });
 </script>
 

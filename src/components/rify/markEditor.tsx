@@ -53,13 +53,8 @@ export default defineComponent({
     /* 获取配置项 */
     let { conf, height } = props;
 
-    const modelVal = ref<string>()
-
-    /* 侦听器, 数据更新 */
-    watchEffect(() => {
-      modelVal.value = props.value;
-      emit('update:value', modelVal.value);
-    });
+    /* 计算属性: 获取 props.value, 并实时更新 */
+    const modelVal = computed({ get: () => props.value, set: val => emit('update:value', val) });
 
     /* 合并配置项 */
     conf = Object.assign({}, defaultProps, conf);

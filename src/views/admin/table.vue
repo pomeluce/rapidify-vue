@@ -125,7 +125,7 @@ onBeforeMount(async () => {
 <template>
   <main>
     <rify-card>
-      <template #title> Excel 表格 </template>
+      <template #title> VisualTable </template>
       <rify-visual-table :label="label" :column="column" :data="tableData" />
     </rify-card>
   </main>

@@ -13,7 +13,7 @@ const conf = ref<EditorProps>({
 
 onBeforeMount(() => {
   loading.value = true;
-  setInterval(() => {
+  setTimeout(() => {
     value.value = grammar;
     loading.value = false;
   }, 500);
