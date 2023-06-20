@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import RifyTextEditor from '@/components/rify/textEditor';
+
 const textValue = ref<string>('');
 const images = ref<string[]>([]);
 </script>

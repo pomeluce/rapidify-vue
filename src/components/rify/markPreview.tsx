@@ -1,6 +1,7 @@
 import { MdPreview, MdCatalog, MdPreviewProps, MdHeadingId } from 'md-editor-v3';
 import { LoadingFour } from '@icon-park/vue-next';
 import 'md-editor-v3/lib/preview.css';
+import './styles/markPreview.scss';
 
 export interface IMarkPreviewCatalogProps {
   editorId: string; // 必须, 对应编辑器的editorId, 在内部注册目录变化监听事件
@@ -32,9 +33,14 @@ export default defineComponent({
   setup(props) {
     const { height, preview, catalog } = props;
     return () => (
-      <div style={{ height: `${height}px` }} class={'relative flex overflow-auto'}>
+      <main style={{ height: `${height}px` }} class={'flex border rounded overflow-auto'}>
         <MdPreview {...preview} modelValue={props.value} />
-        <MdCatalog {...catalog} />
+        {props.value ? (
+          <div class={'rify-mark-preview-menu'}>
+            <section class={'px-[5px] py-3 font-bold'}>本页目录</section>
+            <MdCatalog class={'font-medium text-sm text-gray-800 opacity-80'} {...catalog} />
+          </div>
+        ) : null}
         {props.loading ? (
           <div
             style={{ backgroundColor: 'rgba(255,255,255,0.65)' }}
@@ -51,7 +57,7 @@ export default defineComponent({
             />
           </div>
         ) : null}
-      </div>
+      </main>
     );
   },
 });

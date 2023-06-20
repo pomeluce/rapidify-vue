@@ -14,7 +14,7 @@ const routes = router
   .sort((r1, r2) => (r1.meta.menu?.order ?? 0) - (r2.meta.menu?.order ?? 0));
 const goto = (route: RouteRecordRaw) => {
   route.meta?.menu?.blank ? routeOpen(route, '_blank') : router.push(route);
-  document.documentElement.clientWidth < 768 && (menuStore.menuState = false);
+  document.documentElement.clientWidth < 1024 && (menuStore.menuState = false);
 };
 
 /**
@@ -32,23 +32,23 @@ const toggleMenuList = (index: number) => {
 onMounted(() => {
   // 移动端, 点击关闭菜单
   document.querySelector('.rify-admin-layout')?.addEventListener('click', () => {
-    document.documentElement.clientWidth < 768 && (menuStore.menuState = false);
+    document.documentElement.clientWidth < 1024 && (menuStore.menuState = false);
   });
   // 当前路由菜单展开
   (document.querySelector('.menu-option.active')!.parentElement?.previousElementSibling as HTMLElement).click();
 
   // 加载时为移动端, 则关闭菜单
-  document.documentElement.clientWidth < 768 && (menuStore.menuState = false);
+  document.documentElement.clientWidth < 1024 && (menuStore.menuState = false);
 });
 
 // 监听窗口变化, 调整菜单状态
 window.addEventListener('resize', () => {
-  document.documentElement.clientWidth < 768 && (menuStore.menuState = false);
+  document.documentElement.clientWidth < 1024 && (menuStore.menuState = false);
 });
 </script>
 
 <template>
-  <div class="bg-gray-50 border-r shadow-lg md:shadow-none absolute md:relative h-full overflow-auto z-50">
+  <div class="bg-gray-50 border-r shadow-lg lg:shadow-none absolute lg:relative h-full overflow-auto z-50">
     <main v-show="menuStore.menuState">
       <nav class="text-slate-800">
         <router-link

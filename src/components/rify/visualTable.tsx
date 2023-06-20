@@ -11,6 +11,7 @@ interceptor.add('event.clearActived', params => {
   return params.$event.target.className.indexOf('overflow-auto') > -1;
 });
 
+/* type and interface define */
 export type IVisualRowData = Record<string, any>;
 export type IVisualColumnSlotType =
   | 'default'
@@ -99,6 +100,7 @@ const slotMount = ({ slot: slots, field }: IVisualColumnProp) => {
   return slot;
 };
 
+/* export */
 export default defineComponent({
   name: 'rify-visual-table',
   props: {
@@ -109,6 +111,7 @@ export default defineComponent({
     },
     label: Object as PropType<IVisualTableProp>,
   },
+  /* setup */
   setup(props) {
     const { label, column } = props;
 

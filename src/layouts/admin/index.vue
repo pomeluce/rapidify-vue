@@ -4,7 +4,7 @@ import LeftBar from '@/layouts/admin/leftbar.vue';
 </script>
 
 <template>
-  <main class="grid w-screen h-screen md:grid-cols-[auto_1fr]">
+  <main class="grid w-screen h-screen lg:grid-cols-[auto_1fr]">
     <LeftBar />
     <section class="rify-admin-layout grid grid-rows-[auto_1fr] overflow-hidden">
       <Topbar />

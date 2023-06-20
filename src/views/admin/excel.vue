@@ -2,7 +2,10 @@
 
 <template>
   <main>
-    <rify-sheet />
+    <rify-card>
+      <template #title> 在线 Excel </template>
+      <rify-sheet />
+    </rify-card>
   </main>
 </template>
 
