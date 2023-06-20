@@ -8,7 +8,7 @@ import { LeftOne, RightOne } from '@icon-park/vue-next';
  * eg: 比如点击了某个组件的弹出层面板之后, 此时被激活单元格不应该被自动关闭, 通过返回 false 可以阻止默认的行为
  */
 interceptor.add('event.clearActived', params => {
-  return params.$event.target.className.indexOf('overflow-auto') > -1;
+  return !document.querySelector('.v-binder-follower-container')?.contains(params.$event.target);
 });
 
 /* type and interface define */
