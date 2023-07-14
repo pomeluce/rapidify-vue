@@ -9,7 +9,7 @@ export default () => {
    * @param fn 需要执行的函数
    * @return {(args?: any) => (undefined | Promise<any>)} 返回一个函数, 该函数接收一个参数, 并返回一个 Promise
    */
-  const request = (fn: (args?: any) => Promise<any>) => {
+  const request = (fn: (args?: any) => Promise<any>): ((args?: any) => undefined | Promise<any>) => {
     let sendStatus = false;
     return (args?: any) => {
       if (sendStatus) return;

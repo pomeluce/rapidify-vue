@@ -1,4 +1,4 @@
-import { Config, DashboardOne, WaterfallsH } from '@icon-park/vue-next';
+import { Bydesign, Config, DashboardOne, WaterfallsH } from '@icon-park/vue-next';
 import { RouteRecordRaw } from 'vue-router';
 
 export default [
@@ -17,7 +17,7 @@ export default [
         path: 'workbench',
         name: 'workbench',
         meta: { menu: { label: '工作台' } },
-        component: () => import('@/views/admin/index.vue'),
+        component: () => import('@/views/admin/workbench.vue'),
       },
     ],
   },
@@ -30,19 +30,38 @@ export default [
         path: 'user',
         name: 'userModel',
         meta: { menu: { label: '用户管理' } },
-        component: () => import('@/views/admin/index.vue'),
+        component: () => import('@/views/admin/workbench.vue'),
       },
       {
         path: 'role',
         name: 'roleModel',
         meta: { menu: { label: '角色管理' } },
-        component: () => import('@/views/admin/index.vue'),
+        component: () => import('@/views/admin/workbench.vue'),
       },
       {
         path: 'permissions',
         name: 'permissions',
         meta: { menu: { label: '权限管理' } },
-        component: () => import('@/views/admin/index.vue'),
+        component: () => import('@/views/admin/workbench.vue'),
+      },
+    ],
+  },
+  {
+    path: '/admin/process',
+    component: () => import('@/layouts/admin/index.vue'),
+    meta: { auth: false, menu: { label: '流程管理', icon: Bydesign, order: 2 } },
+    children: [
+      {
+        path: 'define',
+        name: 'processDefine',
+        meta: { menu: { label: '流程定义' } },
+        component: () => import('@/views/admin/workbench.vue'),
+      },
+      {
+        path: 'design',
+        name: 'processDesign',
+        meta: { menu: { label: '流程设计' } },
+        component: () => import('@/views/admin/workbench.vue'),
       },
     ],
   },
@@ -68,6 +87,12 @@ export default [
         name: 'visualTable',
         meta: { menu: { label: 'VisualTable' } },
         component: () => import('@/views/admin/table.vue'),
+      },
+      {
+        path: 'workflow',
+        name: 'workflow',
+        meta: { menu: { label: 'WorkFlow' } },
+        component: () => import('@/views/admin/workflow.vue'),
       },
       {
         path: 'excel',

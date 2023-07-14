@@ -15,7 +15,7 @@ export default () => {
    * 登录接口
    * @type {(args?: any) => (undefined | Promise<any>)} 传入一个登录请求函数
    */
-  const login = request(async (data: UserModel) => {
+  const login: (args?: any) => undefined | Promise<any> = request(async (data: UserModel) => {
     const { data: token } = await http.request<ResultModel<string>>({
       url: ApiUrl.LOGIN,
       method: 'POST',
