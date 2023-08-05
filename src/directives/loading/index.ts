@@ -1,5 +1,5 @@
-import RifyLoadComponent from '@/components/rify/loading';
-import RifyLoad from '@/directives/loading/RifyLoad.ts';
+import RifyLoadComponent from '@/rify/load';
+import { RifyLoad } from '@/directives/loading/rifyLoad';
 
 /* loading 参数模型 */
 export interface ILoadOptions {

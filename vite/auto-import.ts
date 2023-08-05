@@ -1,6 +1,7 @@
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { NaiveUiResolver, VueUseComponentsResolver } from 'unplugin-vue-components/resolvers';
+import { customResolver } from './custom-resolver';
 
 /* 自动导入 */
 export default [
@@ -34,12 +35,8 @@ export default [
       // 自动导入 naive-ui 组件
       NaiveUiResolver(),
       VueUseComponentsResolver(),
-      // 针对 iconPark 图标按需导入
-      componentName => {
-        if (componentName.startsWith('Icon')) {
-          return { name: componentName.slice(4), from: '@icon-park/vue-next' };
-        }
-      },
+      // 针对 iconPark 图标, 内置 rify 组件按需导入
+      customResolver
     ],
     // 自定义组件自动引入
     dirs: ['src/components'],

@@ -8,9 +8,9 @@ import LeftBar from '@/layouts/admin/leftbar.vue';
     <LeftBar />
     <section class="rify-admin-layout grid grid-rows-[auto_1fr] overflow-hidden">
       <Topbar />
-      <div class="overflow-auto">
+      <div class="overflow-auto p-5">
         <router-view #default="{ Component, route }">
-          <component :is="Component" class="m-5" :key="route.fullPath" />
+          <component :is="Component" :key="route.fullPath" />
         </router-view>
       </div>
     </section>

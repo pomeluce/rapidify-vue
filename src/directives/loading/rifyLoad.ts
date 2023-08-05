@@ -1,7 +1,7 @@
 import { ComponentPublicInstance } from 'vue';
-import { ILoadOptions } from '@/directives/loading/index.ts';
+import { ILoadOptions } from '@/directives/loading';
 
-export default class RifyLoad {
+class RifyLoad {
   private instance: ILoadOptions;
   private component: ComponentPublicInstance;
 
@@ -40,3 +40,4 @@ export default class RifyLoad {
     document.querySelector('.rify-loading')?.remove();
   }
 }
+export { RifyLoad };

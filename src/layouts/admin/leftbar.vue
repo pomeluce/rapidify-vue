@@ -66,8 +66,8 @@ window.addEventListener('resize', () => {
           >
             <article class="flex justify-between items-center cursor-pointer" @click="toggleMenuList(index)">
               <span class="flex items-center gap-2">
-                <component :is="route.meta.menu?.icon" size="16" />
-                <span>{{ route.meta.menu?.label }}</span>
+                <component :is="route.meta.menu?.icon!" size="16" />
+                <span class="select-none">{{ route.meta.menu?.label }}</span>
               </span>
               <span class="rify-menu-item__suffix">
                 <icon-down class="hidden" size="16" />

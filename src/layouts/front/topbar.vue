@@ -28,7 +28,7 @@ const { topbar } = config();
       </section>
       <section class="flex items-center gap-2">
         <rify-screen />
-        <rify-avatar-menu />
+        <avatar-menu />
       </section>
     </div>
   </main>
