@@ -1,5 +1,6 @@
 import { Bydesign, Config, DashboardOne, WaterfallsH } from '@icon-park/vue-next';
 import { RouteRecordRaw } from 'vue-router';
+import result from './result';
 
 export default [
   {
@@ -102,4 +103,5 @@ export default [
       },
     ],
   },
+  ...result,
 ] as RouteRecordRaw[];
