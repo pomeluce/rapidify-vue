@@ -5,6 +5,10 @@ const props = {
     type: Boolean,
     default: false,
   },
+  bgColor: {
+    type: String,
+    default: '#ffffff',
+  },
 };
 
 export default defineComponent({
@@ -15,13 +19,12 @@ export default defineComponent({
     title?: () => any;
     foot?: () => any;
   }>,
-  setup({ isHoverShadow }, { slots }) {
+  setup({ isHoverShadow, bgColor }, { slots }) {
     return () => (
       <section
+        style={{ backgroundColor: bgColor }}
         class={
-          Object.keys(slots).length
-            ? `bg-white border shadow-sm rounded-xl ${isHoverShadow ? 'hover:drop-shadow-xl' : ''}`
-            : ''
+          Object.keys(slots).length ? `border shadow-sm rounded-xl ${isHoverShadow ? 'hover:drop-shadow-xl' : ''}` : ''
         }
       >
         {slots.title ? <h1 class={'p-5 py-3 opacity-90 text-lg font-normal border-b'}>{slots.title()}</h1> : null}

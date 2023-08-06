@@ -1,6 +1,7 @@
 export * from './antv-flow';
 export * from './breadcrumb';
 export * from './card';
+export * from './error';
 export * from './load';
 export * from './mark-editor';
 export * from './screen';

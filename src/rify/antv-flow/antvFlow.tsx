@@ -71,6 +71,37 @@ export default defineComponent({
         autoResize: true, // 自适应大小
         panning: true, // 是否支持画布平移
         mousewheel: true, // 是否支持鼠标滚轮缩放
+        connecting: {
+          allowNode: false,
+          allowBlank: false,
+          highlight: true,
+          createEdge() {
+            return this.createEdge({
+              attrs: {
+                line: {
+                  stroke: '#8f8f8f',
+                  strokeWidth: 1,
+                },
+              },
+            });
+          },
+          /* validateConnection(validateArgs) {
+            const { sourceCell, targetCell, sourceMagnet, targetMagnet } = validateArgs;
+            // 不能连接自身
+            if (sourceCell === targetCell) {
+              return false;
+            }
+
+            // 只能从 bottom 连接桩开始连接，连接到 top 连接桩
+            if (!sourceMagnet || sourceMagnet.getAttribute('port-group') === 'top') {
+              return false;
+            }
+            if (!targetMagnet || targetMagnet.getAttribute('port-group') !== 'top') {
+              return false;
+            }
+            return true;
+          }, */
+        },
       });
 
       const source = graph.addNode({

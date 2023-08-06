@@ -41,5 +41,43 @@ export default () => {
     else location.href = route;
   };
 
-  return { request, renderIcon, routeOpen };
+  /**
+   * 颜色浅化函数
+   * @param colorCode 颜色代码
+   * @param amount 浅化程度, 默认为 20
+   */
+  const lightenColor = (colorCode: string, amount: number = 20) => {
+    // 去除 # 号
+    colorCode = colorCode.replace('#', '');
+
+    // 将颜色代码解析为RGB值
+    const red = parseInt(colorCode.substring(0, 2), 16);
+    const green = parseInt(colorCode.substring(2, 4), 16);
+    const blue = parseInt(colorCode.substring(4, 6), 16);
+
+    // 计算浅化后的RGB值
+    const newRed = Math.min(255, red + amount);
+    const newGreen = Math.min(255, green + amount);
+    const newBlue = Math.min(255, blue + amount);
+
+    // 将浅化后的RGB值转换成十六进制格式
+    const newColorCode = `#${newRed.toString(16).padStart(2, '0')}${newGreen.toString(16).padStart(2, '0')}${newBlue
+      .toString(16)
+      .padStart(2, '0')}`;
+
+    return newColorCode;
+  };
+
+  /**
+   * 颜色代码验证函数
+   * @param colorCode 颜色代码
+   * @return {boolean} 返回颜色代码是否合法
+   */
+  const isValidColorCode = (colorCode: string): boolean => {
+    const colorCodeRegex = /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{4}|[0-9A-Fa-f]{8})$/;
+
+    return colorCodeRegex.test(colorCode);
+  };
+
+  return { request, renderIcon, routeOpen, lightenColor, isValidColorCode };
 };
