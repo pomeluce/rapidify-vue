@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import { IVisualColumnProp, IVisualTableProp } from '@/components/rify/visualTable';
+<script setup lang='ts'>
+import { IVisualColumnProp, IVisualTableProp } from '@/rify';
 import dayjs from 'dayjs';
 
 // column 配置
@@ -125,10 +125,10 @@ onBeforeMount(async () => {
 <template>
   <main>
     <rify-card>
-      <template #title> VisualTable </template>
-      <rify-visual-table :label="label" :column="column" :data="tableData" />
+      <template #title> VisualTable</template>
+      <rify-visual-table :label='label' :column='column' :data='tableData' />
     </rify-card>
   </main>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang='scss'></style>

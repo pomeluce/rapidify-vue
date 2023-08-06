@@ -18,7 +18,7 @@ export default defineComponent({
   name: 'rify-error',
   props: { ...props },
   slots: Object as SlotsType<{
-    button?: () => any;
+    opreate?: () => any;
   }>,
   setup({ color, bgColor, httpCode, message }, { slots }) {
     // 导入颜色代码校验和生成函数
@@ -76,7 +76,7 @@ export default defineComponent({
             <span> {httpCode || 'ERROR'} </span>
             <span> {message || 'This is error page'} </span>
           </section>
-          {slots.button ? slots.button() : null}
+          {slots.opreate ? slots.opreate() : null}
         </div>
       </main>
     );
