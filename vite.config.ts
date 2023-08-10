@@ -30,11 +30,17 @@ export default defineConfig(({ command, mode }) => {
         '#': path.resolve(__dirname, 'types'),
       },
     },
-    // 开启 css 模块化
     css: {
+      // 开启 css 模块化
       modules: {
         localsConvention: 'camelCaseOnly',
       },
+      // 允许组件在 scoped 下访问全局 scss 变量
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "@/styles/mixin.scss";`,
+        }
+      }
     },
     base: isBuild ? '/' : '/',
     // 本地开发服务器配置

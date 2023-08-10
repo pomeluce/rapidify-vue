@@ -1,5 +1,4 @@
-import { App } from 'vue';
 import './tailwindcss.scss';
 
-const setup = (app: App) => {};
+const setup = () => {};
 export { setup };
