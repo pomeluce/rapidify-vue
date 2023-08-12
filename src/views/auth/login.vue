@@ -13,11 +13,6 @@ const togglePwdShow = () => {
   pwdShow.value = !pwdShow.value;
   passType.value = passType.value === 'password' ? 'text' : 'password';
 };
-
-const toggleTheme = () => {
-  const theme = document.body.getAttribute('data-theme');
-  document.body.setAttribute('data-theme', theme === 'dark' ? 'light' : 'dark');
-};
 </script>
 
 <template>
@@ -47,7 +42,7 @@ const toggleTheme = () => {
             <n-form-item>
               <article class="login-item">
                 <icon-mail theme="filled" size="16" :strokeWidth="4" />
-                <input class="login-item-input" placeholder="请输入邮箱或用户名" type="text" />
+                <input class="login-item-input" placeholder="请输入邮箱" type="text" />
               </article>
             </n-form-item>
             <n-form-item>
@@ -62,12 +57,10 @@ const toggleTheme = () => {
             </n-form-item>
           </n-form>
           <span class="login-operate">
-            <n-checkbox>
-              <span class="login-remember-checkbox">记住密码</span>
-            </n-checkbox>
+            <n-checkbox> 记住密码 </n-checkbox>
             <n-button type="primary" text>忘记密码</n-button>
           </span>
-          <button class="login-button" @click="toggleTheme">登录</button>
+          <button class="login-button">登录</button>
           <span class="login-to-register">
             <p>没有账号?</p>
             <n-button type="primary" text @click="$router.push({ name: 'register' })">现在注册</n-button>
@@ -84,15 +77,14 @@ const toggleTheme = () => {
 
   & .login-card {
     box-shadow: 0 -10px 15px 20px rgb(0 0 0 / 0.1), 0 10px 15px 20px rgb(0 0 0 / 0.1);
-    @apply w-1/2 min-w-[20rem] lg:w-auto lg:grid grid-cols-2 rounded-xl;
-    @include bg-color(login-card-bgColor);
+    @apply w-1/2 min-w-[20rem] lg:w-auto lg:grid grid-cols-2 rounded-xl bg-white;
 
     & .login-bg {
       @apply hidden lg:flex justify-center items-center col-span-1;
 
       & .login-bg-body {
         @apply relative w-40 h-40 flex justify-center items-center rounded-full;
-        @include bg-color(login-card-img-bgColor);
+        background-color: #f0f0f0;
 
         & .login-bg-symbol {
           @apply absolute;
@@ -128,15 +120,10 @@ const toggleTheme = () => {
 
         & h1 {
           @apply my-3 text-center lg:uppercase text-3xl font-extrabold;
-          @include text-color(login-card-title-color);
         }
 
         & .login-operate {
           @apply flex justify-between items-center w-full;
-
-          & .login-remember-checkbox {
-            @include text-color(login-card-title-color);
-          }
         }
 
         & .login-button {

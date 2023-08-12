@@ -20,6 +20,9 @@ export default [
           createTime: 1604940444444,
           updateTime: 1604940444444,
         },
+        map: {
+          role: 'amdin',
+        },
       };
     },
   },

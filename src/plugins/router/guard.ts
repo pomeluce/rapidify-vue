@@ -11,7 +11,7 @@ const init = async () => {
   try {
     await Promise.all([getCurrentUser()]);
   } catch (e) {
-    console.error('Interface Anonymous Access');
+    console.error('Interface Anonymous Access', e);
   }
 };
 

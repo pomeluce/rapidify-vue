@@ -23,7 +23,11 @@
       </svg>
     </div>
     <section class="login-inner">
-      <router-view />
+      <router-view #default="{ Component, route }">
+        <transition name="fade">
+          <component :is="Component" :key="route.fullPath" />
+        </transition>
+      </router-view>
     </section>
     <footer></footer>
   </main>
@@ -84,5 +88,15 @@
   100% {
     transform: translate3d(85px, 0, 0);
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
