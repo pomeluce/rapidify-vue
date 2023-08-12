@@ -95,8 +95,13 @@ export default () => {
       infoColorHover: '#44586c',
       infoColorPressed: '#263747',
       infoColorSuppl: '#44586c',
-    }
+    },
   };
 
-  return { axios, topbar, themeOverrides };
+  // 获取浏览器主题
+  const browserTheme = (): string => {
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  };
+
+  return { axios, topbar, themeOverrides, browserTheme };
 };

@@ -4,7 +4,15 @@ import Notify from '@/utils/notify/notify.tsx';
 import Config from '@/config/config.ts';
 
 // 主题配置
-const { themeOverrides } = Config();
+const { themeOverrides, browserTheme } = Config();
+
+// 设置主题
+onMounted(() => document.body.setAttribute('data-theme', browserTheme()));
+
+// 监听系统主题变化
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+  document.body.setAttribute('data-theme', event.matches ? 'dark' : 'light');
+});
 </script>
 
 <template>

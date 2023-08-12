@@ -1,0 +1,14 @@
+@import './variable.scss';
+
+$themes: (
+  light: (
+    login-card-bgColor: $rify-login-card-bgColor,
+    login-card-img-bgColor: $rify-login-card-img-bgColor,
+    login-card-title-color: $rify-login-card-title-color,
+  ),
+  dark: (
+    login-card-bgColor: $rify-login-card-dark-bgColor,
+    login-card-img-bgColor: $rify-login-card-img-dark-bgColor,
+    login-card-title-color: $rify-login-card-title-dark-color,
+  ),
+);

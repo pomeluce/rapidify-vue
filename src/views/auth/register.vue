@@ -1,7 +1,9 @@
-<script lang='ts' setup></script>
+<script lang="ts" setup></script>
 
 <template>
-  <div></div>
+  <main>
+    <rify-card> 注册界面 </rify-card>
+  </main>
 </template>
 
-<style lang='scss' scoped></style>
+<style lang="scss" scoped></style>
