@@ -24,7 +24,7 @@
     </div>
     <section class="login-inner">
       <router-view #default="{ Component, route }">
-        <transition name="fade">
+        <transition name="slide" mode="out-in">
           <component :is="Component" :key="route.fullPath" />
         </transition>
       </router-view>
@@ -90,13 +90,20 @@
   }
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity .5s ease;
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.35s ease-out;
 }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+.slide-leave-from,
+.slide-enter-to {
+  @apply translate-x-0 opacity-100;
+}
+
+.slide-enter-from {
+  @apply -translate-x-1/4 opacity-0;
+}
+.slide-leave-to {
+  @apply translate-x-1/4 opacity-0;
 }
 </style>

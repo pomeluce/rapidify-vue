@@ -116,7 +116,7 @@ import triangle from '@/assets/images/triangle.svg';
       @apply hidden lg:flex justify-center items-center col-span-1;
 
       & .register-bg-body {
-        @apply relative w-40 h-40 flex justify-center items-center rounded-full;
+        @apply relative w-48 h-48 flex justify-center items-center rounded-full;
         background-color: #f0f0f0;
 
         & .register-bg-symbol {
