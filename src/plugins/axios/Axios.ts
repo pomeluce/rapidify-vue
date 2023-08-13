@@ -45,10 +45,7 @@ export default class Axios {
    * @param options 加载及消息配置
    * @return {Promise<T>} 返回请求结果
    */
-  public async request<T>(
-    config: AxiosRequestConfig,
-    options: Options = { loading: true, message: true, clearValidateError: true },
-  ) {
+  public request = async <T>(config: AxiosRequestConfig, options?: Options): Promise<T> => {
     // 合并配置
     this.options = Object.assign(this.options, options ?? {});
     // 发送请求
@@ -60,7 +57,7 @@ export default class Axios {
         reject(error);
       }
     }) as Promise<T>;
-  }
+  };
 
   /**
    * 请求拦截器

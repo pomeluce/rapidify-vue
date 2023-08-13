@@ -1,3 +1,4 @@
+import { App, DirectiveBinding } from 'vue';
 import RifyLoadComponent from '@/rify/load';
 import { RifyLoad } from '@/directives/loading/rifyLoad';
 
@@ -37,6 +38,18 @@ const RifyLoading = (option?: ILoadOptions): RifyLoad => {
   loading.show();
   // 返回实例
   return loading;
+};
+
+export default (app: App) => {
+  const loadInstance = ref<RifyLoad>();
+  app.directive('rifyLoad', {
+    mounted(_: HTMLElement, binding: DirectiveBinding<boolean>) {
+      binding.value && (loadInstance.value = RifyLoading()).show();
+    },
+    updated(_: HTMLElement, binding: DirectiveBinding<boolean>) {
+      binding.value ? (loadInstance.value = RifyLoading()).show() : loadInstance.value?.close();
+    },
+  });
 };
 
 export { RifyLoading };

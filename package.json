@@ -22,6 +22,8 @@
     "@icon-park/vue-next": "^1.4.2",
     "@types/lodash": "^4.14.197",
     "@vavt/md-editor-extension": "^3.0.0",
+    "@vee-validate/i18n": "^4.11.1",
+    "@vee-validate/rules": "^4.11.1",
     "@vueuse/core": "^10.3.0",
     "@wangeditor/editor": "^5.1.23",
     "@wangeditor/editor-for-vue": "^5.1.12",
@@ -30,13 +32,15 @@
     "echarts": "^5.4.3",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.21",
-    "md-editor-v3": "^4.2.2",
+    "md-editor-v3": "^4.3.0",
     "pinia": "^2.1.6",
     "sass": "^1.65.1",
+    "vee-validate": "^4.11.1",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4",
     "vxe-table": "^4.4.7",
-    "xe-utils": "^3.5.11"
+    "xe-utils": "^3.5.11",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",

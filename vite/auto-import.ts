@@ -17,6 +17,7 @@ export default [
       'vue',
       'vue-router',
       'pinia',
+      'vee-validate',
       { 'naive-ui': ['useMessage', 'useDialog', 'useNotification', 'useLoadingBar'] },
     ],
     // 自动导入 NaiveUI api
@@ -36,7 +37,7 @@ export default [
       NaiveUiResolver(),
       VueUseComponentsResolver(),
       // 针对 iconPark 图标, 内置 rify 组件按需导入
-      customResolver
+      customResolver,
     ],
     // 自定义组件自动引入
     dirs: ['src/components'],

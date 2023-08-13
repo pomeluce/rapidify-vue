@@ -16,7 +16,12 @@ export default defineConfig(({ command, mode }) => {
     // 加载插件
     plugins: [
       ...autoImport,
-      vue(),
+      vue({
+        script: {
+          defineModel: true, // 开启 defineModel 语法
+          propsDestructure: true, // 开启 props 解构响应
+        },
+      }),
       vueJsx(),
       viteMockServe({ mockPath: 'mock', enable: !isBuild && !env.VITE_API_URL }),
     ],
@@ -39,8 +44,8 @@ export default defineConfig(({ command, mode }) => {
       preprocessorOptions: {
         scss: {
           additionalData: `@import "@/styles/mixin.scss";`,
-        }
-      }
+        },
+      },
     },
     base: isBuild ? '/' : '/',
     // 本地开发服务器配置
