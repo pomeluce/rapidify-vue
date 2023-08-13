@@ -1,6 +1,6 @@
 import { MockMethod } from 'vite-plugin-mock';
 import { faker } from '@faker-js/faker/locale/zh_CN';
-import { ApiUrl } from '../src/enum/ApiUrl';
+import { ApiUrl } from '../../src/enum/ApiUrl';
 
 export default [
   {

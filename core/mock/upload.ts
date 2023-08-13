@@ -1,15 +1,15 @@
 import { MockMethod } from 'vite-plugin-mock';
-import { ApiUrl } from '../src/enum/ApiUrl';
+import { ApiUrl } from '../../src/enum/ApiUrl';
 
 export default [
   {
-    url: '/api/' + ApiUrl.LOGIN,
+    url: '/api/' + ApiUrl.UPLOAD_IMAGE,
     method: 'post',
     response: () => {
       return {
         code: 200,
         message: 'success',
-        data: 'token',
+        data: '/src/assets/images/avatar.png',
       };
     },
   },

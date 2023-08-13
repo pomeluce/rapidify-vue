@@ -1,6 +1,6 @@
 import { MockMethod } from 'vite-plugin-mock';
 import { faker } from '@faker-js/faker/locale/zh_CN';
-import { ApiUrl } from '../src/enum/ApiUrl';
+import { ApiUrl } from '../../src/enum/ApiUrl';
 
 const weekday = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
 

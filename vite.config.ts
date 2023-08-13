@@ -1,10 +1,10 @@
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import autoImport from './vite/auto-import';
-import { parseEnv } from './vite/utils';
 import path from 'path';
-import { viteMockServe } from 'vite-plugin-mock';
+import autoImport from './core/auto-import';
+import { parseEnv } from './core/utils';
+import mock from './core/mock';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -23,7 +23,7 @@ export default defineConfig(({ command, mode }) => {
         },
       }),
       vueJsx(),
-      viteMockServe({ mockPath: 'mock', enable: !isBuild && !env.VITE_API_URL }),
+      mock(isBuild, env),
     ],
     // 配置路径别名
     resolve: {
