@@ -1,6 +1,6 @@
 import { App, DirectiveBinding } from 'vue';
 import RifyLoadComponent from '@/rify/load';
-import { RifyLoad } from '@/directives/loading/rifyLoad';
+import { RifyLoad } from '@/directives/loading/RifyLoad';
 
 /* loading 参数模型 */
 export interface ILoadOptions {

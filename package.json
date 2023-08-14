@@ -13,8 +13,10 @@
     "pomeluce"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "dev": "vite --mode dev",
+    "pro": "vite --mode pro",
+    "build:dev": "vue-tsc && vite build --mode dev",
+    "build:pro": "vue-tsc && vite build --mode pro",
     "preview": "vite preview"
   },
   "dependencies": {
