@@ -2,7 +2,7 @@ import { RouteRecordRaw } from 'vue-router';
 import { Error } from '@icon-park/vue-next';
 
 export default {
-  path: '/admin',
+  path: '/error',
   component: () => import('@/layouts/error/index.vue'),
   meta: { auth: false, menu: { label: '异常页面', icon: Error, order: 4 } },
   children: [

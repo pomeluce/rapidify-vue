@@ -18,8 +18,7 @@ export default defineConfig(({ command, mode }) => {
       ...autoImport,
       vue({
         script: {
-          defineModel: true, // 开启 defineModel 语法
-          propsDestructure: true, // 开启 props 解构响应
+          defineModel: true,
         },
       }),
       vueJsx(),

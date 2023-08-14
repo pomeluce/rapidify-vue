@@ -5,19 +5,21 @@ const { type, placeholder, clearable } = defineProps<{
   clearable?: boolean;
 }>();
 
-const inputType = ref<string>(type || 'text');
+const value = defineModel<string | number>();
 
-const value = defineModel<string>();
+const inputType = ref<string>(type || 'text');
 
 const isShowPass = ref<boolean>(true);
 
 const isShowClearable = ref<boolean>(false);
 
+/* 密码显示方法切换 */
 const toggleShowPass = () => {
   isShowPass.value = !isShowPass.value;
   inputType.value = inputType.value === 'password' ? 'text' : 'password';
 };
 
+/* 延迟隐藏清除按钮, 保证清除按钮事件触发 */
 const hiddenClearable = () => {
   setTimeout(() => {
     isShowClearable.value = false;
