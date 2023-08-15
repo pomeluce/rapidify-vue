@@ -1,5 +1,22 @@
 <script lang="ts" setup>
+import { useFields, yup } from '@/plugins/validate';
 import registerBg from '@/assets/images/register-bg.svg';
+
+const user = reactive<{ account: string; password: string; confirmed: string }>({
+  account: '',
+  password: '',
+  confirmed: '',
+});
+
+const { errors } = useForm({
+  validationSchema: {
+    account: yup.string().required().email().label('邮箱'),
+    password: yup.string().required().min(8).label('密码'),
+    confirmed: yup.string().required().oneOf(['password'], '两次密码不一致').label('确认密码'),
+  },
+});
+
+useFields(user);
 </script>
 
 <template>
@@ -9,21 +26,24 @@ import registerBg from '@/assets/images/register-bg.svg';
         <div class="w-full lg:w-3/4 flex flex-col gap-3">
           <h1 class="my-3 text-center lg:uppercase text-3xl font-extrabold">Rapidify-Vue</h1>
           <form class="flex flex-col gap-3 py-5" @submit.prevent="">
-            <form-input type="text" placeholder="请输入邮箱" clearable>
+            <form-input v-model="user.account" type="text" placeholder="请输入邮箱" clearable>
               <template #prefix>
                 <icon-mail theme="filled" size="16" :strokeWidth="4" />
               </template>
             </form-input>
-            <form-input type="password" placeholder="请输入密码" clearable>
+            <form-error :info="errors.account" />
+            <form-input ref="password" v-model="user.password" type="password" placeholder="请输入密码" clearable>
               <template #prefix>
                 <icon-lock-one theme="filled" size="16" :strokeWidth="4" />
               </template>
             </form-input>
-            <form-input type="password" placeholder="请再次输入密码" clearable>
+            <form-error :info="errors.password" />
+            <form-input v-model="user.confirmed" type="password" placeholder="请再次输入密码" clearable>
               <template #prefix>
                 <icon-lock theme="filled" size="16" :strokeWidth="4" />
               </template>
             </form-input>
+            <form-error :info="errors.confirmed" />
           </form>
           <button class="w-full py-3 bg-blue-500 rounded-full text-white">注册</button>
           <span class="flex justify-center items-center gap-2 mt-5 text-gray-500">

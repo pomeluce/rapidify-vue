@@ -23,7 +23,7 @@ const toggleShowPass = () => {
 const hiddenClearable = () => {
   setTimeout(() => {
     isShowClearable.value = false;
-  }, 100);
+  }, 200);
 };
 </script>
 

@@ -1,3 +1,4 @@
+export * from './alert';
 export * from './antv-flow';
 export * from './breadcrumb';
 export * from './card';
