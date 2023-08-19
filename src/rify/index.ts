@@ -8,5 +8,6 @@ export * from './mark-editor';
 export * from './result';
 export * from './screen';
 export * from './sheet';
+export * from './slider-validator';
 export * from './text-editor';
 export * from './visual-table';

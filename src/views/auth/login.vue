@@ -7,6 +7,12 @@ const user = reactive<{ account: string; password: string }>({
   password: '',
 });
 
+const valided = ref<boolean>(false);
+
+watch(valided, val => {
+  console.log(val);
+});
+
 const { errors } = useForm({
   validationSchema: {
     account: yup.string().required().email().label('邮箱'),
@@ -39,6 +45,7 @@ useFields(user);
               </template>
             </form-input>
             <form-error :info="errors.password" />
+            <rify-slider-validator v-model="valided" />
             <span class="flex justify-between items-center px-2">
               <n-checkbox> 记住密码 </n-checkbox>
               <n-button type="primary" text>忘记密码</n-button>

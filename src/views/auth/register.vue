@@ -12,7 +12,11 @@ const { errors } = useForm({
   validationSchema: {
     account: yup.string().required().email().label('邮箱'),
     password: yup.string().required().min(8).label('密码'),
-    confirmed: yup.string().required().oneOf(['password'], '两次密码不一致').label('确认密码'),
+    confirmed: yup
+      .string()
+      .required()
+      .oneOf([yup.ref('password')], '两次密码不一致')
+      .label('确认密码'),
   },
 });
 
@@ -32,7 +36,7 @@ useFields(user);
               </template>
             </form-input>
             <form-error :info="errors.account" />
-            <form-input ref="password" v-model="user.password" type="password" placeholder="请输入密码" clearable>
+            <form-input v-model="user.password" type="password" placeholder="请输入密码" clearable>
               <template #prefix>
                 <icon-lock-one theme="filled" size="16" :strokeWidth="4" />
               </template>
