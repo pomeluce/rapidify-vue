@@ -1,11 +1,16 @@
 <script setup lang="ts">
-const { type, placeholder, clearable } = defineProps<{
+const props = defineProps<{
+  modelValue: string | number | undefined;
   type?: 'text' | 'password';
   placeholder?: string;
   clearable?: boolean;
 }>();
 
-const value = defineModel<string | number>();
+const emits = defineEmits<{
+  'update:modelValue': [value: string | number | undefined];
+}>();
+
+const { type, placeholder, clearable } = props;
 
 const inputType = ref<string>(type || 'text');
 
@@ -25,6 +30,14 @@ const hiddenClearable = () => {
     isShowClearable.value = false;
   }, 200);
 };
+
+/* 计算属性, 完成 value 双向绑定 */
+const value = computed({
+  get: () => props.modelValue,
+  set: val => {
+    emits('update:modelValue', val);
+  },
+});
 </script>
 
 <template>

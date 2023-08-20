@@ -66,8 +66,8 @@ dependencies:
     specifier: ^4.2.4
     version: 4.2.4(vue@3.3.4)
   vxe-table:
-    specifier: ^4.5.2
-    version: 4.5.2(vue@3.3.4)(xe-utils@3.5.12)
+    specifier: ^4.5.3
+    version: 4.5.3(vue@3.3.4)(xe-utils@3.5.12)
   xe-utils:
     specifier: ^3.5.12
     version: 3.5.12
@@ -1396,7 +1396,7 @@ packages:
       mime-match: 1.0.2
       namespace-emitter: 2.0.1
       nanoid: 3.3.6
-      preact: 10.17.0
+      preact: 10.17.1
     dev: false
 
   /@uppy/store-default@2.1.1:
@@ -1869,7 +1869,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.10
-      caniuse-lite: 1.0.30001521
+      caniuse-lite: 1.0.30001522
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -1919,7 +1919,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001521
+      caniuse-lite: 1.0.30001522
       electron-to-chromium: 1.4.496
       node-releases: 2.0.13
       update-browserslist-db: 1.0.11(browserslist@4.21.10)
@@ -1945,8 +1945,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /caniuse-lite@1.0.30001521:
-    resolution: {integrity: sha512-fnx1grfpEOvDGH+V17eccmNjucGUnCbP6KL+l5KqBIerp26WK/+RQ7CIDE37KGJjaPyqWXXlFUyKiWmvdNNKmQ==}
+  /caniuse-lite@1.0.30001522:
+    resolution: {integrity: sha512-TKiyTVZxJGhsTszLuzb+6vUZSjVOAhClszBr2Ta2k9IwtNBT/4dzmL6aywt0HCgEZlmwJzXJd8yNiob6HgwTRg==}
     dev: true
 
   /chalk@2.4.2:
@@ -2957,8 +2957,8 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.0.2
 
-  /preact@10.17.0:
-    resolution: {integrity: sha512-SNsI8cbaCcUS5tbv9nlXuCfIXnJ9ysBMWk0WnB6UWwcVA3qZ2O6FxqDFECMAMttvLQcW/HaNZUe2BLidyvrVYw==}
+  /preact@10.17.1:
+    resolution: {integrity: sha512-X9BODrvQ4Ekwv9GURm9AKAGaomqXmip7NQTZgY7gcNmr7XE83adOMJvd3N42id1tMFU7ojiynRsYnY6/BRFxLA==}
     dev: false
 
   /prettier@2.8.8:
@@ -3519,8 +3519,8 @@ packages:
       vue: 3.3.4
     dev: true
 
-  /vxe-table@4.5.2(vue@3.3.4)(xe-utils@3.5.12):
-    resolution: {integrity: sha512-AjJTs1RawNwIXbNmG1HifAq8DwUqCScxq2voygbHf68m2oO1wOgYrosAK8XcNibfbze6IMlg6fFpSm7SkJKs1Q==}
+  /vxe-table@4.5.3(vue@3.3.4)(xe-utils@3.5.12):
+    resolution: {integrity: sha512-v/MKLDQgnYG81q05znn2eUqH2Cwo5d5l6NOnlTkr2+gVrDMWJ9zm/T3oVhrovk2UpzHcESvbc1+szh2qRhKgSw==}
     peerDependencies:
       vue: ^3.2.28
       xe-utils: ^3.5.0

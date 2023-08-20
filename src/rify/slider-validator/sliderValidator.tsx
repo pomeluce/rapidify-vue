@@ -276,13 +276,17 @@ export default defineComponent({
     };
 
     const handleTragger = () => {
-      btnInit();
+      // 滑块初始左边距
+      beginClientX.value = (
+        document.querySelector('.rify-slider-btn-outer')! as HTMLElement
+      ).getBoundingClientRect().left;
       isShow.value = true;
       document.addEventListener('click', handleClickOutside);
     };
 
     onMounted(() => {
       cvsInit();
+      btnInit();
     });
 
     onUnmounted(() => {

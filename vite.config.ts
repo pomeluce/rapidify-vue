@@ -14,16 +14,7 @@ export default defineConfig(({ command, mode }) => {
   const env = parseEnv(loadEnv(mode, process.cwd()));
   return {
     // 加载插件
-    plugins: [
-      ...autoImport,
-      vue({
-        script: {
-          defineModel: true,
-        },
-      }),
-      vueJsx(),
-      mock(isBuild, env),
-    ],
+    plugins: [...autoImport, vue(), vueJsx(), mock(isBuild, env)],
     // 配置路径别名
     resolve: {
       // 导入组件忽略文件后缀
