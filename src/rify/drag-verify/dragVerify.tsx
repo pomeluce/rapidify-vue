@@ -23,7 +23,7 @@ const props = {
 export default defineComponent({
   name: 'rify-drag-verify',
   props: { ...props },
-  emits: ['handleRest'],
+  emits: ['handleRest', 'handleVerify'],
   setup(props, { emit }) {
     /* DOM 元素 */
     let dragEl = {} as HTMLCanvasElement;
@@ -141,6 +141,8 @@ export default defineComponent({
       isEnd.value = true;
       // 设置提示文本
       verfiyText.value = isVerify.value ? '验证成功' : '验证失败';
+      // 执行自定义事件
+      emit('handleVerify', isVerify.value);
     };
 
     const varReset = () => {
@@ -178,7 +180,7 @@ export default defineComponent({
     );
 
     onMounted(() => {
-      init(options);
+      init(props.options);
     });
 
     onUnmounted(() => {
