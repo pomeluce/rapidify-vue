@@ -25,5 +25,29 @@ export default () => {
     await router.push({ name: CacheKey.REDIRECT_ROUTE_NAME });
   });
 
-  return { isLogin, login };
+  /**
+   * 获取滑块验证码位置信息
+   * @param {number} width - 滑块背景宽度
+   * @param {number} height - 滑块背景高度
+   * @param {number} length - 滑块背景长度
+   * @return {Promise<ResultModel<T>>} 返回一个 Promise 类型的请求结果
+   * @example
+   *  const { captcha } = useAuth();
+   *  const { data } = await captcha();
+   *  console.log(data);
+   */
+  const captcha = <T>(width: number, height: number, length: number): Promise<ResultModel<T>> => {
+    return http.request<ResultModel<T>>(
+      {
+        method: 'POST',
+        url: ApiUrl.CAPTCHA,
+        data: { width, height, length },
+      },
+      {
+        loading: false,
+      },
+    );
+  };
+
+  return { isLogin, login, captcha };
 };

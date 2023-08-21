@@ -1,6 +1,11 @@
 <script lang="ts" setup>
 import { useFields, yup } from '@/plugins/validate';
+import { RifyDragVerifyOptions } from '@/rify';
 import loginBg from '@/assets/images/login-bg.svg';
+
+const { captcha } = useAuth();
+
+const options = ref<RifyDragVerifyOptions>();
 
 const user = reactive<{ account: string; password: string }>({
   account: '',
@@ -21,6 +26,15 @@ const { errors } = useForm({
 });
 
 useFields(user);
+
+const getCaptcha = async () => {
+  const { data: reuslt } = await captcha<RifyDragVerifyOptions>(300, 200, 32);
+  options.value = reuslt;
+};
+
+onBeforeMount(() => {
+  getCaptcha();
+});
 </script>
 
 <template>
@@ -45,7 +59,7 @@ useFields(user);
               </template>
             </form-input>
             <form-error :info="errors.password" />
-            <rify-slider-validator v-model="valided" />
+            <rify-drag-verify :width="300" :height="200" :options="options" @handleRest="getCaptcha" />
             <span class="flex justify-between items-center px-2">
               <n-checkbox> 记住密码 </n-checkbox>
               <n-button type="primary" text>忘记密码</n-button>
