@@ -67,7 +67,7 @@ onBeforeUnmount(() => {
       <icon-click-tap v-if="!isEnd" fill="#228be6" class="animate-bounce" />
       <icon-check-one v-else-if="verify" fill="#40c057" />
       <icon-close-one v-else fill="#f03e3e" />
-      <span> 点击进行验证 </span>
+      <span> {{ isEnd ? (verify ? '验证成功' : '点击重试') : '点击进行验证' }} </span>
     </section>
     <section class="form-drag-verify-content" v-if="isShow">
       <rify-drag-verify

@@ -39,7 +39,9 @@ const drawImage = (puzzle: HTMLCanvasElement, bgCvs: HTMLCanvasElement, options:
  * @param isClip 是否裁剪
  */
 const drawPath = (ctx: CanvasRenderingContext2D, options: RifyDragVerifyOptions, isClip: boolean = false) => {
-  const { startX, startY, length, radius } = options;
+  const { startX, startY, width, height, length, radius } = options;
+  // 清除画布
+  ctx.clearRect(0, 0, width, height);
   // 圆形便宜比例
   const offset = length / 6.4;
   // 开始绘制

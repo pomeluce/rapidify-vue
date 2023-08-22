@@ -59,10 +59,6 @@ export default defineComponent({
       const dragBgEl2D = dragBgEl.getContext('2d') as CanvasRenderingContext2D;
       const dragEl2D = dragEl.getContext('2d') as CanvasRenderingContext2D;
 
-      // 清除画布
-      dragBgEl2D.clearRect(0, 0, dragBgEl.width, dragBgEl.height);
-      dragEl2D.clearRect(0, 0, dragEl.width, dragEl.height);
-
       // 移除拼图左边距
       dragEl.style.left = '0px';
 
@@ -174,13 +170,11 @@ export default defineComponent({
       }
     };
 
-    watch(
-      () => props.options,
-      val => init(val),
-    );
-
     onMounted(() => {
-      init(props.options);
+      watch(
+        () => props.options,
+        val => init(val),
+      );
     });
 
     onUnmounted(() => {

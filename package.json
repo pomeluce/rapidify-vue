@@ -47,8 +47,8 @@
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
     "@types/mockjs": "^1.0.7",
-    "@types/node": "^18.17.6",
-    "@vitejs/plugin-vue": "^4.3.2",
+    "@types/node": "^18.17.7",
+    "@vitejs/plugin-vue": "^4.3.3",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
     "autoprefixer": "^10.4.15",
     "mockjs": "^1.1.0",
