@@ -3,7 +3,9 @@ import { RifyDragVerifyOptions } from '@/rify';
 
 const { captcha } = useAuth();
 
-const isShow = ref<boolean>(false);
+const emit = defineEmits<{
+  handleVerify: [isSuccess: boolean];
+}>();
 
 const { width, height, length } = withDefaults(
   defineProps<{
@@ -18,6 +20,7 @@ const { width, height, length } = withDefaults(
   },
 );
 
+const isShow = ref<boolean>(false);
 const options = ref<RifyDragVerifyOptions>();
 const verify = ref<boolean>(false);
 const isEnd = ref<boolean>(false);
@@ -50,6 +53,7 @@ const getVerify = (isSuccess: boolean) => {
   setTimeout(() => {
     isShow.value = false;
   }, 1000);
+  emit('handleVerify', verify.value);
 };
 
 onMounted(() => {

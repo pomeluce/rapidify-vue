@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { EditorProps, MdPreviewProps } from 'md-editor-v3';
-import { IMarkPreviewCatalogProps } from '@/components/rify/markPreview';
+import { RifyMarkPreviewCatalogProps } from '@/rify';
 import grammar from '@/assets/static/grammar.md?raw';
 import dayjs from 'dayjs';
 
@@ -42,9 +42,9 @@ onBeforeUnmount(() => {
 const previewOptions = ref<MdPreviewProps>({
   editorId: 'preview-only',
 } as MdPreviewProps);
-const catalogOptions = ref<IMarkPreviewCatalogProps>({
+const catalogOptions = ref<RifyMarkPreviewCatalogProps>({
   editorId: 'preview-only',
-} as IMarkPreviewCatalogProps);
+} as RifyMarkPreviewCatalogProps);
 </script>
 
 <template>

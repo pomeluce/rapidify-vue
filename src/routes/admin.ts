@@ -45,6 +45,12 @@ export default [
         meta: { menu: { label: '权限管理' } },
         component: () => import('@/views/admin/workbench.vue'),
       },
+      {
+        path: 'menus',
+        name: 'menus',
+        meta: { menu: { label: '菜单管理' } },
+        component: () => import('@/views/admin/menus.vue'),
+      },
     ],
   },
   {

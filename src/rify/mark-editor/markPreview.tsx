@@ -3,7 +3,7 @@ import { LoadingFour } from '@icon-park/vue-next';
 import 'md-editor-v3/lib/preview.css';
 import './styles/markPreview.scss';
 
-export interface IMarkPreviewCatalogProps {
+export interface RifyMarkPreviewCatalogProps {
   editorId: string; // 必须, 对应编辑器的editorId, 在内部注册目录变化监听事件
   class?: string; // 非必须, 目录组件最外层类名
   mdHeadingId?: MdHeadingId; // 非必须, 特殊化编辑器标题的算法, 与编辑器相同
@@ -15,7 +15,7 @@ export interface IMarkPreviewCatalogProps {
 
 const props = {
   preview: Object as PropType<MdPreviewProps>,
-  catalog: Object as PropType<IMarkPreviewCatalogProps>,
+  catalog: Object as PropType<RifyMarkPreviewCatalogProps>,
   value: String,
   height: {
     type: [String, Number],

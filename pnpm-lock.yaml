@@ -18,11 +18,11 @@ dependencies:
     specifier: ^3.0.0
     version: 3.0.0
   '@vee-validate/i18n':
-    specifier: ^4.11.2
-    version: 4.11.2
+    specifier: ^4.11.3
+    version: 4.11.3
   '@vee-validate/rules':
-    specifier: ^4.11.2
-    version: 4.11.2(vue@3.3.4)
+    specifier: ^4.11.3
+    version: 4.11.3(vue@3.3.4)
   '@vueuse/core':
     specifier: ^10.3.0
     version: 10.3.0(vue@3.3.4)
@@ -57,8 +57,8 @@ dependencies:
     specifier: ^1.66.1
     version: 1.66.1
   vee-validate:
-    specifier: ^4.11.2
-    version: 4.11.2(vue@3.3.4)
+    specifier: ^4.11.3
+    version: 4.11.3(vue@3.3.4)
   vue:
     specifier: ^3.3.4
     version: 3.3.4
@@ -83,8 +83,8 @@ devDependencies:
     specifier: ^1.0.7
     version: 1.0.7
   '@types/node':
-    specifier: ^18.17.7
-    version: 18.17.7
+    specifier: ^18.17.8
+    version: 18.17.8
   '@vitejs/plugin-vue':
     specifier: ^4.3.3
     version: 4.3.3(vite@4.4.9)(vue@3.3.4)
@@ -120,7 +120,7 @@ devDependencies:
     version: 0.24.1(vue@3.3.4)
   vite:
     specifier: ^4.4.9
-    version: 4.4.9(@types/node@18.17.7)(sass@1.66.1)
+    version: 4.4.9(@types/node@18.17.8)(sass@1.66.1)
   vite-plugin-mock:
     specifier: ^3.0.0
     version: 3.0.0(esbuild@0.19.2)(mockjs@1.1.0)(vite@4.4.9)
@@ -538,7 +538,7 @@ packages:
       '@codemirror/state': 6.2.1
       '@codemirror/view': 6.16.0
       '@lezer/common': 1.0.4
-      '@lezer/javascript': 1.4.6
+      '@lezer/javascript': 1.4.7
     dev: false
 
   /@codemirror/lang-json@6.0.1:
@@ -1231,8 +1231,8 @@ packages:
       '@lezer/lr': 1.3.10
     dev: false
 
-  /@lezer/javascript@1.4.6:
-    resolution: {integrity: sha512-Vfs7hFLxwIW8b0rT956N164KBjy/pOw8zFfrkA1GDYx/07pnZL7seJG6Hi4ANRWzzP6F7XPA71eqwxM4FthwGA==}
+  /@lezer/javascript@1.4.7:
+    resolution: {integrity: sha512-OVWlK0YEi7HM+9JRWtRkir8qvcg0/kVYg2TAMHlVtl6DU1C9yK1waEOLBMztZsV/axRJxsqfJKhzYz+bxZme5g==}
     dependencies:
       '@lezer/highlight': 1.1.6
       '@lezer/lr': 1.3.10
@@ -1372,8 +1372,8 @@ packages:
     resolution: {integrity: sha512-OCxXz6hEaJOVpRwuJMiVY5a6LtJcih+br9gwB/Q8ooOBikvk5FpBQ31OlNimXo3EqKha1Z7PFBni+q9m+8NCWg==}
     dev: true
 
-  /@types/node@18.17.7:
-    resolution: {integrity: sha512-WJj/p/cIg6zUsxv1n2leZHpvn8hr9TYuLQxAZxZcK/7+5t5ukmJGelOLGOy3L1MLhAO/sapTJGd1V7kvoIuzUg==}
+  /@types/node@18.17.8:
+    resolution: {integrity: sha512-Av/7MqX/iNKwT9Tr60V85NqMnsmh8ilfJoBlIVibkXfitk9Q22D9Y5mSpm+FvG5DET7EbVfB40bOiLzKgYFgPw==}
     dev: true
 
   /@types/web-bluetooth@0.0.17:
@@ -1428,14 +1428,14 @@ packages:
     resolution: {integrity: sha512-g/20ugYpM09EpzvGvLPUReEo3fPBefq810NYR31EZwPozZvymkPs1pM1A60GfG0wlQq35iiWoV6HHTyDy/FbwA==}
     dev: false
 
-  /@vee-validate/i18n@4.11.2:
-    resolution: {integrity: sha512-3wk3fxV1rUwotfzBD0rdhNGRk8/4ShSfnaevGp1euU9UugNrrKoe8ed1fdhLZZ6LCFhPTk+1gNUXGwxyrwCahA==}
+  /@vee-validate/i18n@4.11.3:
+    resolution: {integrity: sha512-9KWyplhcwLVTw1MDnrHFe92xnmGwY93h5dG2Fa8n+zb9brfyzD5j366B+WWMJK86yBEKrStZomBohTLLdnVlxg==}
     dev: false
 
-  /@vee-validate/rules@4.11.2(vue@3.3.4):
-    resolution: {integrity: sha512-07Z2m8k1EdlkXYOHpR8cXheOuYEsEUfEYZKreWzym4XP5gNm/D4xrSVKNn+hnykexjnMaQ0+Vcfv9ppPJVxJ8g==}
+  /@vee-validate/rules@4.11.3(vue@3.3.4):
+    resolution: {integrity: sha512-MJmQgTXnt0lEOLfF2z+IE1dViu8dISaLa95axjd/rfjGYLQE9kI/eGQOZ0bojuYIVB7cD+K3xkRNdCPg9Bi7fg==}
     dependencies:
-      vee-validate: 4.11.2(vue@3.3.4)
+      vee-validate: 4.11.3(vue@3.3.4)
     transitivePeerDependencies:
       - vue
     dev: false
@@ -1450,7 +1450,7 @@ packages:
       '@babel/core': 7.22.10
       '@babel/plugin-transform-typescript': 7.22.10(@babel/core@7.22.10)
       '@vue/babel-plugin-jsx': 1.1.5(@babel/core@7.22.10)
-      vite: 4.4.9(@types/node@18.17.7)(sass@1.66.1)
+      vite: 4.4.9(@types/node@18.17.8)(sass@1.66.1)
       vue: 3.3.4
     transitivePeerDependencies:
       - supports-color
@@ -1463,7 +1463,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.4.9(@types/node@18.17.7)(sass@1.66.1)
+      vite: 4.4.9(@types/node@18.17.8)(sass@1.66.1)
       vue: 3.3.4
     dev: true
 
@@ -1920,7 +1920,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001522
-      electron-to-chromium: 1.4.498
+      electron-to-chromium: 1.4.499
       node-releases: 2.0.13
       update-browserslist-db: 1.0.11(browserslist@4.21.10)
     dev: true
@@ -2154,8 +2154,8 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: true
 
-  /electron-to-chromium@1.4.498:
-    resolution: {integrity: sha512-4LODxAzKGVy7CJyhhN5mebwe7U2L29P+0G+HUriHnabm0d7LSff8Yn7t+Wq+2/9ze2Fu1dhX7mww090xfv7qXQ==}
+  /electron-to-chromium@1.4.499:
+    resolution: {integrity: sha512-0NmjlYBLKVHva4GABWAaHuPJolnDuL0AhV3h1hES6rcLCWEIbRL6/8TghfsVwkx6TEroQVdliX7+aLysUpKvjw==}
     dev: true
 
   /encodeurl@1.0.2:
@@ -2448,8 +2448,8 @@ packages:
     resolution: {integrity: sha512-bc4NBHqOqSfRW7POMkHd51LvClaeMXpm8dx0e8oE2GORbq5aRK7Bxl4FyzVLdGtLmvLKL7BTDBG5ACQm4HWjTA==}
     dev: false
 
-  /immutable@4.3.2:
-    resolution: {integrity: sha512-oGXzbEDem9OOpDWZu88jGiYCvIsLHMvGw+8OXlpsvTFvIQplQbjg1B1cvKg8f7Hoch6+NGjpPsH1Fr+Mc2D1aA==}
+  /immutable@4.3.3:
+    resolution: {integrity: sha512-808ZFYMsIRAjLAu5xkKo0TsbY9LBy9H5MazTKIEHerNkg0ymgilGfBPMR/3G7d/ihGmuK2Hw8S1izY2d3kd3wA==}
 
   /inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
@@ -3042,7 +3042,7 @@ packages:
     hasBin: true
     dependencies:
       chokidar: 3.5.3
-      immutable: 4.3.2
+      immutable: 4.3.3
       source-map-js: 1.0.2
 
   /scroll-into-view-if-needed@2.2.31:
@@ -3379,8 +3379,8 @@ packages:
       vue: 3.3.4
     dev: true
 
-  /vee-validate@4.11.2(vue@3.3.4):
-    resolution: {integrity: sha512-tIWMCqMzX/GzCaIvlMg3/2ZFP5sVMjrZHIRIFIs9Wa/Y8gg7dnsYRj0Gp5a9X4C3tPfTJRctkFmb0J7/lR+h1w==}
+  /vee-validate@4.11.3(vue@3.3.4):
+    resolution: {integrity: sha512-YhWORdZRE1GL6vXKj3r9f+Y8fJH5JMwMUJ4DFS44+WcTtiNXggyE3pyJPlZBqS9AgYGZ47EOv4UczkLxHqufiw==}
     peerDependencies:
       vue: ^3.3.4
     dependencies:
@@ -3405,13 +3405,13 @@ packages:
       mockjs: 1.1.0
       path-to-regexp: 6.2.1
       picocolors: 1.0.0
-      vite: 4.4.9(@types/node@18.17.7)(sass@1.66.1)
+      vite: 4.4.9(@types/node@18.17.8)(sass@1.66.1)
     transitivePeerDependencies:
       - esbuild
       - supports-color
     dev: true
 
-  /vite@4.4.9(@types/node@18.17.7)(sass@1.66.1):
+  /vite@4.4.9(@types/node@18.17.8)(sass@1.66.1):
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -3439,7 +3439,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.17.7
+      '@types/node': 18.17.8
       esbuild: 0.18.20
       postcss: 8.4.28
       rollup: 3.28.1
