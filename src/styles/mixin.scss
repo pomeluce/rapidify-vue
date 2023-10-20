@@ -1,7 +1,6 @@
 @import './themes.scss';
 
 @mixin themeify {
-
   // 默认主题的样式
   &:not([data-theme]) {
     $theme-map: map-get($themes, 'light') !global;

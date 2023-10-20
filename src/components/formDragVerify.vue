@@ -74,13 +74,7 @@ onBeforeUnmount(() => {
       <span> {{ isEnd ? (verify ? '验证成功' : '点击重试') : '点击进行验证' }} </span>
     </section>
     <section class="form-drag-verify-content" v-if="isShow">
-      <rify-drag-verify
-        :width="width"
-        :height="height"
-        :options="options"
-        @handleRest="getCaptcha"
-        @handleVerify="getVerify"
-      />
+      <rify-drag-verify :width="width" :height="height" :options="options" @handleRest="getCaptcha" @handleVerify="getVerify" />
     </section>
   </div>
 </template>

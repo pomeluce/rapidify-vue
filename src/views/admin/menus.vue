@@ -1,8 +1,14 @@
 <script setup lang="ts">
-const data = [
+import { DashboardOne } from '@icon-park/vue-next';
+import { TreeOption } from 'naive-ui';
+
+const data: TreeOption[] = [
   {
     label: '前台菜单',
     key: '1',
+    prefix: () => {
+      return h(DashboardOne, { fill: '#000' });
+    },
     children: [
       {
         label: '首页',
@@ -95,20 +101,27 @@ const defaultExpandedKeys = ['1', '1-1', '1-2', '1-3', '2', '2-1', '2-2', '2-3']
 
 <template>
   <rify-card>
-    <n-tabs type="line" size="large" :tabsPadding="20" pane-style="padding: 20px" animate>
+    <n-tabs class="h-full" type="line" size="large" :tabsPadding="20" pane-style="padding: 20px" animated>
       <n-tab-pane name="reception" tab="前台菜单">
-        <div id="menus-pane" class="grid grid-cols-[auto_1fr] grid-flow-row-dense">
-          <nav class="relative h-full">
-            <n-tree
-              block-line
-              :data="data"
-              :default-expanded-keys="defaultExpandedKeys"
-              checkable
-              expand-on-click
-              selectable
-            />
+        <div class="grid grid-cols-[auto_1fr] gap-x-10">
+          <nav>
+            <n-tree block-line :data="data" :default-expanded-keys="defaultExpandedKeys" expand-on-click selectable />
           </nav>
-          <section class=""> </section>
+          <section class="px-5 py-3 border-l">
+            <n-form label-placement="left">
+              <section class="flex gap-3">
+                <n-form-item label="菜单名称">
+                  <n-input type="text"></n-input>
+                </n-form-item>
+                <n-form-item label="菜单地址">
+                  <n-input type="text"></n-input>
+                </n-form-item>
+                <n-form-item label="菜单图标">
+                  <n-input type="text"></n-input>
+                </n-form-item>
+              </section>
+            </n-form>
+          </section>
         </div>
       </n-tab-pane>
       <n-tab-pane name="backstage" tab="后台菜单"> 后台 </n-tab-pane>
@@ -116,8 +129,4 @@ const defaultExpandedKeys = ['1', '1-1', '1-2', '1-3', '2', '2-1', '2-2', '2-3']
   </rify-card>
 </template>
 
-<style scoped lang="scss">
-.menus-pane {
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-}
-</style>
+<style scoped lang="scss"></style>

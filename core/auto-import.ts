@@ -23,7 +23,7 @@ export default [
     // 自动导入 NaiveUI api
     resolvers: [NaiveUiResolver()],
     // 自定义函数导入
-    dirs: ['src/directives/*.d.ts', 'src/store/**/*', 'src/enum/**/*', 'src/config/**/*', 'src/composable/**/*'],
+    dirs: ['src/directives/**/*', 'src/store/**/*', 'src/enum/**/*', 'src/config/**/*', 'src/composable/**/*'],
     // 声明生成的位置
     dts: 'types/rify/auto-imports.d.ts',
     // 使用 vue 模版语法生成代码

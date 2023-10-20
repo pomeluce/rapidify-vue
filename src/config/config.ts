@@ -1,12 +1,5 @@
 import { EditName, Logout, People } from '@icon-park/vue-next';
-import {
-  DropdownDividerOption,
-  DropdownGroupOption,
-  DropdownOption,
-  DropdownRenderOption,
-  GlobalThemeOverrides,
-  NIcon,
-} from 'naive-ui';
+import { DropdownDividerOption, DropdownGroupOption, DropdownOption, DropdownRenderOption, GlobalThemeOverrides, NIcon } from 'naive-ui';
 
 export interface IAxios {
   baseUrl: string;
@@ -56,32 +49,14 @@ export default () => {
       },
     ],
     menu: [
-      {
-        label: '首页',
-        key: RouteName.HOME,
-      },
-      {
-        label: '登录页',
-        key: RouteName.LOGIN,
-      },
-      {
-        label: '注册页',
-        key: RouteName.REGISTER,
-      },
-      {
-        label: '系统后台',
-        key: RouteName.ADMIN,
-      },
+      { label: '首页', key: RouteName.HOME },
+      { label: '登录页', key: RouteName.LOGIN },
+      { label: '注册页', key: RouteName.REGISTER },
+      { label: '系统后台', key: RouteName.ADMIN },
     ],
     breadcrumb: [
-      {
-        label: '首页',
-        to: RouteName.HOME,
-      },
-      {
-        label: '主控台',
-        to: RouteName.ADMIN,
-      },
+      { label: '首页', to: RouteName.HOME },
+      { label: '主控台', to: RouteName.ADMIN },
     ],
   };
 

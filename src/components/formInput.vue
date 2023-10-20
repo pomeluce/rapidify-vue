@@ -30,32 +30,20 @@ const hiddenClearable = () => {
     isShowClearable.value = false;
   }, 200);
 };
-
-/* 计算属性, 完成 value 双向绑定 */
-const value = computed({
-  get: () => props.modelValue,
-  set: val => {
-    emits('update:modelValue', val);
-  },
-});
 </script>
 
 <template>
   <div>
     <slot name="prefix" />
     <input
-      v-model="value"
+      :value="modelValue"
       :placeholder="placeholder"
       :type="inputType"
+      @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
       @focus="() => (isShowClearable = true)"
       @blur="hiddenClearable"
     />
-    <span
-      class="cursor-pointer"
-      v-if="clearable"
-      :style="{ visibility: isShowClearable ? 'visible' : 'hidden' }"
-      @click="value = ''"
-    >
+    <span class="cursor-pointer" v-if="clearable" :style="{ visibility: isShowClearable ? 'visible' : 'hidden' }" @click="$emit('update:modelValue', '')">
       <icon-close-one theme="filled" strokeWidth="4" />
     </span>
     <span class="cursor-pointer" v-if="type === 'password'" @click="toggleShowPass">

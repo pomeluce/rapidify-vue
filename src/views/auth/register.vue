@@ -1,26 +1,18 @@
 <script lang="ts" setup>
-import { useFields, yup } from '@/plugins/validate';
 import registerBg from '@/assets/images/register-bg.svg';
 
-const user = reactive<{ account: string; password: string; confirmed: string }>({
+const { registerValid } = useValidate();
+
+const user = ref<{ account: string; password: string; confirmed: string }>({
   account: '',
   password: '',
   confirmed: '',
 });
 
-const { errors } = useForm({
-  validationSchema: {
-    account: yup.string().required().email().label('邮箱'),
-    password: yup.string().required().min(8).label('密码'),
-    confirmed: yup
-      .string()
-      .required()
-      .oneOf([yup.ref('password')], '两次密码不一致')
-      .label('确认密码'),
-  },
-});
-
-useFields(user);
+const {
+  errors,
+  fields: { account, password, confirmed },
+} = registerValid(user);
 </script>
 
 <template>
@@ -29,20 +21,20 @@ useFields(user);
       <section class="flex flex-col justify-center items-center p-10 lg:px-0">
         <div class="w-full lg:w-3/4 flex flex-col gap-3">
           <h1 class="my-3 text-center lg:uppercase text-3xl font-extrabold">Rapidify-Vue</h1>
-          <form class="flex flex-col gap-3 py-5" @submit.prevent="">
-            <form-input v-model="user.account" type="text" placeholder="请输入邮箱" clearable>
+          <form class="flex flex-col gap-8 py-5" @submit.prevent="">
+            <form-input v-bind="account" type="text" placeholder="请输入邮箱" clearable>
               <template #prefix>
                 <icon-mail theme="filled" size="16" :strokeWidth="4" />
               </template>
             </form-input>
             <form-error :info="errors.account" />
-            <form-input v-model="user.password" type="password" placeholder="请输入密码" clearable>
+            <form-input v-bind="password" type="password" placeholder="请输入密码" clearable>
               <template #prefix>
                 <icon-lock-one theme="filled" size="16" :strokeWidth="4" />
               </template>
             </form-input>
             <form-error :info="errors.password" />
-            <form-input v-model="user.confirmed" type="password" placeholder="请再次输入密码" clearable>
+            <form-input v-bind="confirmed" type="password" placeholder="请再次输入密码" clearable>
               <template #prefix>
                 <icon-lock theme="filled" size="16" :strokeWidth="4" />
               </template>
@@ -65,7 +57,9 @@ useFields(user);
 
 <style lang="scss" scoped>
 .register-card {
-  box-shadow: 0 -10px 15px 20px rgb(0 0 0 / 0.1), 0 10px 15px 20px rgb(0 0 0 / 0.1);
+  box-shadow:
+    0 -10px 15px 20px rgb(0 0 0 / 0.1),
+    0 10px 15px 20px rgb(0 0 0 / 0.1);
   @apply w-1/2 min-w-[24rem] lg:w-auto lg:grid grid-cols-2 rounded-xl bg-white;
 }
 </style>
