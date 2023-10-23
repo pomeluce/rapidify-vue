@@ -1,7 +1,10 @@
 {
   "name": "rapidify-vue",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.10",
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/pomeluce/rapidify-vue",
+  "description": "基于 vue3, typescript, vite, naive-ui, tailwindcss 的前端开发脚手架",
   "keywords": [
     "rapidify",
     "vue3",
@@ -39,7 +42,7 @@
     "pinia": "^2.1.7",
     "sass": "^1.69.4",
     "vee-validate": "^4.11.8",
-    "vue": "^3.3.5",
+    "vue": "^3.3.6",
     "vue-router": "^4.2.5",
     "vxe-table": "^4.5.13",
     "xe-utils": "^3.5.13",

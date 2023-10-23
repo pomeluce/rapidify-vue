@@ -45,7 +45,7 @@ export default class Axios {
    * @param options 加载及消息配置
    * @return {Promise<T>} 返回请求结果
    */
-  public request = async <T>(config: AxiosRequestConfig, options?: Options): Promise<T> => {
+  public request = async <T,>(config: AxiosRequestConfig, options?: Options): Promise<T> => {
     // 合并配置
     this.options = Object.assign(this.options, options ?? {});
     // 发送请求
@@ -126,7 +126,7 @@ export default class Axios {
             break;
           case HttpStatus.NOT_FOUND:
             RifyMessage({ type: 'error', content: '请求资源不存在' });
-            await router.push({ name: RouteName.HOME });
+            await router.push({ name: RouteName.NOT_FOUND });
             break;
           case HttpStatus.TOO_MANY_REQUESTS:
             RifyMessage({ type: 'error', content: '请求过于频繁，请稍候再试' });

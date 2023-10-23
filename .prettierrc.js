@@ -16,7 +16,7 @@ module.exports = {
   // 在 jsx 中使用单引号代替双引号
   jsxSingleQuote: false,
   // 设置单行显示宽度
-  printWidth: 120,
+  printWidth: 180,
   // 不对 markdown 中的段落进行折行处理
   proseWrap: 'never',
   // 仅在必要的时候为对象的 key 添加引号

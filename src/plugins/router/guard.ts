@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios';
 import { RouteLocationNormalized, Router } from 'vue-router';
 
 // 初始化变量
@@ -11,7 +12,10 @@ const init = async () => {
   try {
     await Promise.all([getCurrentUser()]);
   } catch (e) {
-    console.error('Interface Anonymous Access', e);
+    const {
+      request: { status, statusText, responseURL },
+    } = e as AxiosError;
+    console.error(`Interface Anonymous Access ${status} ${statusText}: ${responseURL}`);
   }
 };
 

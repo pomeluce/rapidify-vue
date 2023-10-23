@@ -43,7 +43,15 @@ export default defineConfig(({ command, mode }) => {
       // 监听本地所有 ip
       host: true,
       // 代理
-      proxy: {},
+      proxy: env.VITE_MOCK_ENABLE
+        ? {}
+        : {
+            [env.VITE_BASE_PREFIX]: {
+              target: env.VITE_API_URL,
+              // changeOrigin: true,
+              rewrite: path => path,
+            },
+          },
     },
     build: {
       // 编译是清空输出目录

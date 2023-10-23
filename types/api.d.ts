@@ -3,5 +3,13 @@ interface ResultModel<T> {
   code: number;
   message: string;
   data: T;
-  map: any;
+  body: any;
+}
+
+/* 登录表单模型 */
+interface LoginBody {
+  uid: string;
+  account: string;
+  password: string;
+  code: string;
 }

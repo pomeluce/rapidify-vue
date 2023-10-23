@@ -2,6 +2,7 @@
 import loginBg from '@/assets/images/login-bg.svg';
 
 const { loginValid } = useValidate();
+const { login } = useAuth();
 
 const user = ref<{ account: string; password: string }>({
   account: '',
@@ -11,13 +12,12 @@ const user = ref<{ account: string; password: string }>({
 const {
   errors,
   fields: { account, password },
+  meta,
 } = loginValid(user);
 
 const valided = ref<boolean>(false);
 
-watch(valided, val => {
-  console.log(val);
-});
+const disabled = () => meta.value.touched && meta.value.valid && valided.value;
 </script>
 
 <template>
@@ -29,7 +29,7 @@ watch(valided, val => {
       <section class="flex flex-col justify-center items-center p-10 lg:px-0">
         <div class="w-full lg:w-3/4 flex flex-col gap-3">
           <h1 class="my-3 text-center lg:uppercase text-3xl font-extrabold">Rapidify-Vue</h1>
-          <form class="flex flex-col gap-3 py-5" @submit.prevent="">
+          <form class="flex flex-col gap-3 py-5" @submit.prevent="login(user)">
             <form-input v-bind="account" type="text" placeholder="请输入邮箱" clearable>
               <template #prefix>
                 <icon-mail theme="filled" size="16" :strokeWidth="4" />
@@ -42,12 +42,14 @@ watch(valided, val => {
               </template>
             </form-input>
             <form-error :info="errors.password" />
-            <form-drag-verify :width="300" :height="200" :length="32" />
+            <form-drag-verify :width="300" :height="200" :length="32" @handleVerify="(result: boolean) => (valided = result)" />
             <span class="flex justify-between items-center px-2">
               <n-checkbox> 记住密码 </n-checkbox>
               <n-button type="primary" text>忘记密码</n-button>
             </span>
-            <button class="w-full mt-5 py-3 bg-blue-500 rounded-full text-white">登录</button>
+            <button :disabled="!disabled()">
+              <n-button class="w-full rounded-full" type="primary" size="large" :disabled="!disabled()">登录</n-button>
+            </button>
           </form>
           <span class="flex justify-center items-center gap-2 mt-5 text-gray-500">
             <p class="text-sm select-none">没有账号?</p>

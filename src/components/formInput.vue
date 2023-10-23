@@ -8,6 +8,7 @@ const props = defineProps<{
 
 const emits = defineEmits<{
   'update:modelValue': [value: string | number | undefined];
+  blur: [];
 }>();
 
 const { type, placeholder, clearable } = props;
@@ -26,6 +27,7 @@ const toggleShowPass = () => {
 
 /* 延迟隐藏清除按钮, 保证清除按钮事件触发 */
 const hiddenClearable = () => {
+  emits('blur');
   setTimeout(() => {
     isShowClearable.value = false;
   }, 200);

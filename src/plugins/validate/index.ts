@@ -35,7 +35,7 @@ setLocale({
 });
 
 const componentValid = (initialValues: Ref<Record<string, any>>, yupSchema: yup.ObjectShape) => {
-  const { values, errors, defineComponentBinds } = useForm({
+  const { meta, values, errors, defineComponentBinds } = useForm({
     initialValues,
     validationSchema: toTypedSchema(yup.object(yupSchema)),
   });
@@ -46,7 +46,7 @@ const componentValid = (initialValues: Ref<Record<string, any>>, yupSchema: yup.
 
   initialValues.value = values;
 
-  return { errors, fields };
+  return { errors, fields, meta };
 };
 
 const setup = () => {};

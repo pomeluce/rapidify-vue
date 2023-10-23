@@ -14,9 +14,14 @@ export default defineStore('user', {
       this.user = data;
     },
     async getCurrentUser() {
-      const { data, map } = await currentUser();
-      this.user = data;
-      this.role = map.role;
+      if (useAuth().isLogin()) {
+        const {
+          data,
+          body: { role },
+        } = await currentUser();
+        this.user = data;
+        this.role = role;
+      }
     },
   },
 });

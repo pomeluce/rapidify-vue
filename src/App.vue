@@ -3,6 +3,8 @@ import { zhCN, dateZhCN } from 'naive-ui';
 import Notify from '@/utils/notify/notify.tsx';
 import Config from '@/config/config.ts';
 
+defineOptions({ name: 'rify-app' });
+
 // 主题配置
 const { themeOverrides, browserTheme } = Config();
 

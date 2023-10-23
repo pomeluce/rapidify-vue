@@ -6,7 +6,7 @@ export default [
   {
     path: '/admin',
     component: () => import('@/layouts/admin/index.vue'),
-    meta: { auth: false, menu: { label: 'Dashboard', icon: DashboardOne, order: 1 } },
+    meta: { auth: true, menu: { label: 'Dashboard', icon: DashboardOne, order: 1 } },
     children: [
       {
         path: '',
