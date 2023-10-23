@@ -3,6 +3,7 @@
 [Rapidify-vue](https://github.com/pomeluce/rapidify-vue) 是一个开源的, 基于 [Vue3.0](https://github.com/vuejs/vue-next)、[Vite](https://github.com/vitejs/vite)、 [Naive UI](https://www.naiveui.com/)、[TypeScript](https://www.typescriptlang.org/) 的前后台快速开发脚手架，它使用了最新的前端技术栈，并提炼了典型的业务模型，页面，包括二次封装组件、动态菜单、权限校验、粒子化权限控制、流程管理等功能, 它可以帮助你快速搭建前台后台项目。
 
 ## 特性
+
 - 响应式、多主题，多配置，快速集成，开箱即用
 - 基于 `Vue3`、`Typescript`、`Pinia`、`Vite` 等前端前沿技术
 - 集成富文本、Markdown、VisualTabel、在线 Excel
@@ -29,6 +30,34 @@
 
 ## 使用
 
+#### 方式 1:
+
+- 安装 cli 工具
+
+```bash
+npm i rify-app -g
+```
+
+- 通过全局命令创建项目
+
+```bash
+rify-app
+```
+
+- 进入项目文件夹, 启动项目
+
+```bash
+cd [project_name]
+
+pnpm install
+
+pnpm dev
+
+pnpm build
+```
+
+#### 方式 2:
+
 - 获取项目代码
 
 ```bash
@@ -54,7 +83,6 @@ pnpm dev
 ```bash
 pnpm build
 ```
-
 
 ## 如何贡献
 
@@ -93,5 +121,5 @@ pnpm build
 支持现代浏览器, 不支持 IE
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|                         not support                          |                       last 2 versions                        |                       last 2 versions                        |                       last 2 versions                        |                       last 2 versions                        |
+| :-: | :-: | :-: | :-: | :-: |
+| not support | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
