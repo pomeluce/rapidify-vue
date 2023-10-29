@@ -1,9 +1,10 @@
 import { http } from '@/plugins/axios';
 import router from '@/plugins/router';
-import { AxiosError, AxiosResponse } from 'axios';
+import { AxiosError } from 'axios';
 
-const { request } = useUtils();
+const { request, resolveErr } = useUtils();
 const storage = useStorage();
+
 export default () => {
   /**
    * 判断用户是否登录
@@ -21,16 +22,23 @@ export default () => {
    */
   const login: (args?: any) => undefined | Promise<any> = request(async (data: LoginBody) => {
     try {
-      const { data: token } = await http.request<ResultModel<string>>({
+      const {
+        code,
+        message,
+        data: token,
+      } = await http.request<ResultModel<string>>({
         url: ApiUrl.LOGIN,
         method: 'POST',
         data,
       });
-      storage.set(CacheKey.TOKEN_NAME, token);
-      await router.push({ name: CacheKey.REDIRECT_ROUTE_NAME });
+      if (code === 200) {
+        storage.set(CacheKey.TOKEN_NAME, token);
+        await router.push({ path: storage.get(CacheKey.REDIRECT_ROUTE_NAME) || '/' });
+      } else {
+        RifyMessage({ type: 'error', content: message || '登录失败,请稍后重试!' });
+      }
     } catch (error) {
-      const { response: { data } = {} as AxiosResponse } = error as AxiosError;
-      RifyMessage({ type: 'error', content: data.message || '登录失败,请稍后重试!' });
+      resolveErr(error as AxiosError);
     }
   });
 

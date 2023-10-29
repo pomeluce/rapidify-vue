@@ -2,6 +2,7 @@ import { Component } from 'vue';
 import { NIcon } from 'naive-ui';
 import { RouteRecordRaw } from 'vue-router';
 import router from '@/plugins/router';
+import { AxiosError } from 'axios';
 
 export default () => {
   /**
@@ -61,9 +62,7 @@ export default () => {
     const newBlue = Math.min(255, blue + amount);
 
     // 将浅化后的RGB值转换成十六进制格式
-    const newColorCode = `#${newRed.toString(16).padStart(2, '0')}${newGreen.toString(16).padStart(2, '0')}${newBlue
-      .toString(16)
-      .padStart(2, '0')}`;
+    const newColorCode = `#${newRed.toString(16).padStart(2, '0')}${newGreen.toString(16).padStart(2, '0')}${newBlue.toString(16).padStart(2, '0')}`;
 
     return newColorCode;
   };
@@ -79,5 +78,16 @@ export default () => {
     return colorCodeRegex.test(colorCode);
   };
 
-  return { request, renderIcon, routeOpen, lightenColor, isValidColorCode };
+  /**
+   * 请求异常处理
+   * @param error - 请求异常对象
+   */
+  const resolveErr = (error: AxiosError) => {
+    const {
+      request: { status, statusText, responseURL },
+    } = error;
+    console.error(`Interface Anonymous Access ${status} ${statusText}: ${responseURL}`);
+  };
+
+  return { request, renderIcon, routeOpen, lightenColor, isValidColorCode, resolveErr };
 };

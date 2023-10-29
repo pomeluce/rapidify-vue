@@ -94,8 +94,6 @@ export default class Axios {
           this.loading.close();
           this.loading = undefined;
         }
-        // 允许访问 refresh_token 响应头
-        response.headers['Access-Control-Expose-Headers'] = 'refresh-token';
         // 判断 response 是否携带有 refresh_token
         if (!!response.headers['refresh-token']) storage.set(CacheKey.TOKEN_NAME, response.headers['refresh-token']);
         // 判断是否展示提示消息
@@ -111,8 +109,12 @@ export default class Axios {
       async (error: AxiosError) => {
         if (this.loading) this.loading.close() && (this.loading = undefined);
         this.options = { loading: true, message: true, clearValidateError: true };
-        const { response: { status, data } = {} as AxiosResponse } = error;
+        const { response: { status, data, headers } = {} as AxiosResponse } = error;
         const { message } = data;
+
+        // 判断 response 是否携带有 refresh_token
+        if (!!headers['refresh-token']) storage.set(CacheKey.TOKEN_NAME, headers['refresh-token']);
+
         switch (status) {
           case HttpStatus.UNAUTHORIZED:
             storage.remove(CacheKey.TOKEN_NAME);
@@ -125,11 +127,11 @@ export default class Axios {
             RifyMessage({ type: 'error', content: message ?? '没有操作权限' });
             break;
           case HttpStatus.NOT_FOUND:
-            RifyMessage({ type: 'error', content: '请求资源不存在' });
+            RifyMessage({ type: 'error', content: message ?? '请求资源不存在' });
             await router.push({ name: RouteName.NOT_FOUND });
             break;
           case HttpStatus.TOO_MANY_REQUESTS:
-            RifyMessage({ type: 'error', content: '请求过于频繁，请稍候再试' });
+            RifyMessage({ type: 'error', content: message ?? '请求过于频繁，请稍候再试' });
             break;
           default:
             if (message) {

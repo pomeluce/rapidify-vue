@@ -1,6 +1,8 @@
 import { AxiosError } from 'axios';
 import { RouteLocationNormalized, Router } from 'vue-router';
 
+const { resolveErr } = useUtils();
+
 // 初始化变量
 let isInit = false;
 
@@ -12,10 +14,7 @@ const init = async () => {
   try {
     await Promise.all([getCurrentUser()]);
   } catch (e) {
-    const {
-      request: { status, statusText, responseURL },
-    } = e as AxiosError;
-    console.error(`Interface Anonymous Access ${status} ${statusText}: ${responseURL}`);
+    resolveErr(e as AxiosError);
   }
 };
 
@@ -28,7 +27,7 @@ const beforeEach = async (to: RouteLocationNormalized) => {
   // 访问需要登录的资源进行登录验证
   if (to.meta.auth && !isLogin()) {
     storage.set(CacheKey.REDIRECT_ROUTE_NAME, to.fullPath);
-    RifyMessage({ type: 'info', content: '您当前还未登录, 请先登录' });
+    RifyMessage({ type: 'info', content: '当前未登录或登录已过期', duration: 2000 });
     return { name: RouteName.LOGIN };
   }
 
